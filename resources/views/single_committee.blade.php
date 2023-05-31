@@ -30,7 +30,7 @@
                 <div class="row d-flex justify-content-center m-0 p-3">
                     @foreach ($sub_committees as $data)
                         <div class="col-12 col-md-4 col-lg-3">
-                            <div class="card profile-card d-flex justify-content-center align-items-center">
+                            <div class="card profile-card d-flex justify-content-center align-items-center" style="min-height:375px ;height: 100%;">
                                 <div class="card d-flex justify-content-center  align-items-center  bg-light p-2"
                                     style="width: 90%; margin-top: 120px;"><img class="leave-profile"
                                         src="{{ asset(basename(storage_path()) . '/' . $data->user->media?->file_path) }}"
@@ -39,8 +39,8 @@
                                     <h5 class="pt-2">{{ $data->user->name }}</h5>
                                     <span class="h8">{{ $data->user->employeeDetails?->position?->title }}</span>
                                 </div>
-                                <span class="profile-body">{{ $data->user->address }}</span>
-                                <span class="profile-body">{{ $data->user->email }}</span>
+                                <span class="profile-body">{{ $data->user->employeeDetails?->department?->title }}</span>
+                                <span class="profile-body"style="font-size: 13px;">{{ $data->user->email }}</span>
                                 <span class="profile-body">{{$data?->mobile_no}}</span>
                             </div>
 

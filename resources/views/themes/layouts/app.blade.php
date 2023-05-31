@@ -161,7 +161,7 @@
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
-
+            <li class="nav-heading">Frequently Used</li>
             <li class="nav-item">
                 <a class="nav-link {{ request()->getRequestUri() == '/dashboard' ? 'active' : '' }}"
                     href="{{ route('dashboard') }}">
@@ -177,6 +177,57 @@
                     </a>
                 </li><!-- End Insurance Nav -->
             @endcan
+            @can('outstation')
+                <li class="nav-item">
+                    <a class="nav-link  {{ request()->getRequestUri() == '/outstation' ? 'active' : '' }}"
+                        href="{{ route('outstation.index') }}">
+                        <i class="bi bi-briefcase"></i><span>Outstation</span>
+                    </a>
+                </li><!-- End Outgoing Nav -->
+            @endcan
+            @can('leave')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/leave' ? 'active' : '' }}"
+                        href="{{ route('leave.index') }}">
+                        <i class="bi bi-person-bounding-box"></i><span>Leave Update</span>
+                    </a>
+                </li><!-- End Leave Nav -->
+            @endcan
+            @can('notice')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/notice' ? 'active' : '' }}"
+                        href="{{ route('notice.index') }}">
+                        <i class="bi bi-megaphone"></i><span>Notices</span>
+                    </a>
+                </li><!-- End notices Nav -->
+            @endcan
+            @can('notice-type')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/noticetype' ? 'active' : '' }}"
+                        href="{{ route('noticetype.index') }}">
+                        <i class="bi bi-file-word"></i><span>Notice Type</span>
+                    </a>
+                </li><!-- End Notice Type Nav -->
+            @endcan
+
+            <li class="nav-heading">Rates Management</li>
+            @can('rate')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/rate' ? 'active' : '' }}"
+                        href="{{ route('rate.index') }}">
+                        <i class="bi bi-graph-up"></i><span>Basic Rates</span>
+                    </a>
+                </li><!-- End rates Nav -->
+            @endcan
+            @can('interest-head')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/interesthead' ? 'active' : '' }}"
+                        href="{{ route('interesthead.index') }}">
+                        <i class="bi bi-building"></i><span>Interest Rates Head</span>
+                    </a>
+                </li><!-- End Interest Head Nav -->
+            @endcan
+
             @can('interest')
                 <li class="nav-item">
                     <a class="nav-link {{ request()->getRequestUri() == '/fixeddeposit' ? 'active' : '' }}"
@@ -185,6 +236,14 @@
                         <span>Interest Rates</span>
                     </a>
                 </li><!-- End Interest Nav -->
+            @endcan
+            @can('standard-terrif-head')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/standardterrifhead' ? 'active' : '' }}"
+                        href="{{ route('standardterrifhead.index') }}">
+                        <i class="bi bi-boxes"></i><span>Standard Tarriff Head</span>
+                    </a>
+                </li><!-- End Standard terrif Head Nav -->
             @endcan
             @can('standardterrif')
                 <li class="nav-item">
@@ -196,6 +255,16 @@
                     </a>
                 </li><!-- End Standard Terrif Nav -->
             @endcan
+            @can('fiscalyear')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/fiscalyear' ? 'active' : '' }}"
+                        href="{{ route('fiscalyear.index') }}">
+                        <i class="bi bi-calendar-date"></i><span>Fiscal Year</span>
+                    </a>
+                </li><!-- End team-members Nav -->
+            @endcan
+
+            <li class="nav-heading">Renewables </li>
             @can('insurance')
                 <li class="nav-item">
                     <a class="nav-link {{ request()->getRequestUri() == '/insurance' ? 'active' : '' }}"
@@ -224,43 +293,28 @@
                     </a>
                 </li><!-- End Vendor Nav -->
             @endcan
+            @can('vendor-category')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/vendorcategory' ? 'active' : '' }}"
+                        href="{{ route('vendorcategory.index') }}">
+                        <i class="bi bi-tags"></i><span>Vendor Category</span>
+                    </a>
+                </li><!-- End vendor-category Nav -->
+            @endcan
+            @can('vendor-type')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/vendortype' ? 'active' : '' }}"
+                        href="{{ route('vendortype.index') }}">
+                        <i class="bi bi-list"></i><span>Vendor Types</span>
+                    </a>
+                </li><!-- End vendor-types Nav -->
+            @endcan
 
 
 
+            <li class="nav-heading">Document Managment</li>
 
-            <li class="nav-heading">Public Pages</li>
-            @can('rate')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/rate' ? 'active' : '' }}"
-                        href="{{ route('rate.index') }}">
-                        <i class="bi bi-graph-up"></i><span>Rates</span>
-                    </a>
-                </li><!-- End rates Nav -->
-            @endcan
-            @can('notice')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/notice' ? 'active' : '' }}"
-                        href="{{ route('notice.index') }}">
-                        <i class="bi bi-megaphone"></i><span>Notices</span>
-                    </a>
-                </li><!-- End notices Nav -->
-            @endcan
-            @can('leave')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/leave' ? 'active' : '' }}"
-                        href="{{ route('leave.index') }}">
-                        <i class="bi bi-person-bounding-box"></i><span>Leave Update</span>
-                    </a>
-                </li><!-- End Leave Nav -->
-            @endcan
-            @can('outstation')
-                <li class="nav-item">
-                    <a class="nav-link  {{ request()->getRequestUri() == '/outstation' ? 'active' : '' }}"
-                        href="{{ route('outstation.index') }}">
-                        <i class="bi bi-briefcase"></i><span>Outstation</span>
-                    </a>
-                </li><!-- End Outgoing Nav -->
-            @endcan
+
             @can('document')
                 <li class="nav-item">
                     <a class="nav-link  {{ request()->getRequestUri() == '/document' ? 'active' : '' }}"
@@ -269,6 +323,22 @@
                     </a>
                 </li><!-- End documents Nav -->
             @endcan
+            @can('document-type')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/documenttype' ? 'active' : '' }}"
+                        href="{{ route('documenttype.index') }}">
+                        <i class="bi bi-file-word"></i><span>Document Type</span>
+                    </a>
+                </li><!-- End Document Type Nav -->
+            @endcan
+            @can('subdocument-type')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/subdocumenttype' ? 'active' : '' }}"
+                        href="{{ route('subdocumenttype.index') }}">
+                        <i class="bi bi-file-earmark"></i><span>Sub Document Type</span>
+                    </a>
+                </li><!-- End sub Document Type Nav -->
+            @endcan
             @can('policyandproductpaper')
                 <li class="nav-item">
                     <a class="nav-link {{ request()->getRequestUri() == '/policy' ? 'active' : '' }}"
@@ -276,6 +346,40 @@
                         <i class="bi bi-journal-text"></i><span>Policies and Product Paper</span>
                     </a>
                 </li><!-- End Policy and Product Nav -->
+            @endcan
+
+            <li class="nav-heading">Human Resource Management</li>
+            @can('team-member')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/user' ? 'active' : '' }}"
+                        href="{{ route('user.index') }}">
+                        <i class="bi bi-person"></i><span>Employees</span>
+                    </a>
+                </li>
+            @endcan
+            @can('branch')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/branch' ? 'active' : '' }}"
+                        href="{{ route('branch.index') }}">
+                        <i class="bi bi-share"></i><span>Branch</span>
+                    </a>
+                </li><!-- End branch Nav -->
+            @endcan
+            @can('position')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/position' ? 'active' : '' }}"
+                        href="{{ route('position.index') }}">
+                        <i class="bi bi-person"></i><span>Position</span>
+                    </a>
+                </li><!-- End Position Nav -->
+            @endcan
+            @can('department')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->getRequestUri() == '/department' ? 'active' : '' }}"
+                        href="{{ route('department.index') }}">
+                        <i class="bi bi-clipboard"></i><span>Department</span>
+                    </a>
+                </li><!-- End Department Nav -->
             @endcan
             @can('board-member')
                 <li class="nav-item">
@@ -294,87 +398,6 @@
                 </li>
                 <!-- End committe Nav -->
             @endcan
-            @can('branch')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/branch' ? 'active' : '' }}"
-                        href="{{ route('branch.index') }}">
-                        <i class="bi bi-share"></i><span>Branch</span>
-                    </a>
-                </li><!-- End branch Nav -->
-            @endcan
-            @can('charge')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/charge' ? 'active' : '' }}"
-                        href="{{ route('charge.index') }}">
-                        <i class="bi bi-credit-card"></i><span>Charges</span>
-                    </a>
-                </li><!-- End charges Nav -->
-            @endcan
-            <li class="nav-heading">Admin Pages</li>
-            @can('vendor-category')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/vendorcategory' ? 'active' : '' }}"
-                        href="{{ route('vendorcategory.index') }}">
-                        <i class="bi bi-tags"></i><span>Vendor Category</span>
-                    </a>
-                </li><!-- End vendor-category Nav -->
-            @endcan
-            @can('vendor-type')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/vendortype' ? 'active' : '' }}"
-                        href="{{ route('vendortype.index') }}">
-                        <i class="bi bi-list"></i><span>Vendor Types</span>
-                    </a>
-                </li><!-- End vendor-types Nav -->
-            @endcan
-            @can('position')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/position' ? 'active' : '' }}"
-                        href="{{ route('position.index') }}">
-                        <i class="bi bi-person"></i><span>Position</span>
-                    </a>
-                </li><!-- End Position Nav -->
-            @endcan
-            @can('department')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/department' ? 'active' : '' }}"
-                        href="{{ route('department.index') }}">
-                        <i class="bi bi-clipboard"></i><span>Department</span>
-                    </a>
-                </li><!-- End Department Nav -->
-            @endcan
-            @can('document-type')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/documenttype' ? 'active' : '' }}"
-                        href="{{ route('documenttype.index') }}">
-                        <i class="bi bi-file-word"></i><span>Document Type</span>
-                    </a>
-                </li><!-- End Document Type Nav -->
-            @endcan
-            @can('subdocument-type')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/subdocumenttype' ? 'active' : '' }}"
-                        href="{{ route('subdocumenttype.index') }}">
-                        <i class="bi bi-file-earmark"></i><span>Sub Document Type</span>
-                    </a>
-                </li><!-- End sub Document Type Nav -->
-            @endcan
-            @can('notice-type')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/noticetype' ? 'active' : '' }}"
-                        href="{{ route('noticetype.index') }}">
-                        <i class="bi bi-file-word"></i><span>Notice Type</span>
-                    </a>
-                </li><!-- End Notice Type Nav -->
-            @endcan
-            @can('charge-type')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/chargetype' ? 'active' : '' }}"
-                        href="{{ route('chargetype.index') }}">
-                        <i class="bi bi-cash"></i><span>Charge Type</span>
-                    </a>
-                </li><!-- End Charge Type Nav -->
-            @endcan
             @can('committee-level')
                 <li class="nav-item">
                     <a class="nav-link {{ request()->getRequestUri() == '/committeelevel' ? 'active' : '' }}"
@@ -383,30 +406,28 @@
                     </a>
                 </li><!-- End Committe Level Nav -->
             @endcan
-            @can('interest-head')
+
+            <li class="nav-heading">Authority Managment</li>
+            @can('charge')
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/interesthead' ? 'active' : '' }}"
-                        href="{{ route('interesthead.index') }}">
-                        <i class="bi bi-building"></i><span>Interest Head</span>
+                    <a class="nav-link {{ request()->getRequestUri() == '/charge' ? 'active' : '' }}"
+                        href="{{ route('charge.index') }}">
+                        <i class="bi bi-credit-card"></i><span>Charges</span>
                     </a>
-                </li><!-- End Interest Head Nav -->
+                </li><!-- End charges Nav -->
             @endcan
-            @can('standard-terrif-head')
+
+            @can('charge-type')
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/standardterrifhead' ? 'active' : '' }}"
-                        href="{{ route('standardterrifhead.index') }}">
-                        <i class="bi bi-boxes"></i><span>Standard Tarriff Head</span>
+                    <a class="nav-link {{ request()->getRequestUri() == '/chargetype' ? 'active' : '' }}"
+                        href="{{ route('chargetype.index') }}">
+                        <i class="bi bi-cash"></i><span>Charge Type</span>
                     </a>
-                </li><!-- End Standard terrif Head Nav -->
+                </li><!-- End Charge Type Nav -->
             @endcan
-            @can('team-member')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/user' ? 'active' : '' }}"
-                        href="{{ route('user.index') }}">
-                        <i class="bi bi-person"></i><span>Team Members</span>
-                    </a>
-                </li>
-            @endcan
+
+
+
             @can('roles')
                 <li class="nav-item">
                     <a class="nav-link {{ request()->getRequestUri() == '/roles' ? 'active' : '' }}"
@@ -423,14 +444,7 @@
                     </a>
                 </li><!-- End team-members Nav -->
             @endcan
-            @can('fiscalyear')
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->getRequestUri() == '/fiscalyear' ? 'active' : '' }}"
-                        href="{{ route('fiscalyear.index') }}">
-                        <i class="bi bi-calendar-date"></i><span>Fiscal Year</span>
-                    </a>
-                </li><!-- End team-members Nav -->
-            @endcan
+
         </ul>
 
     </aside><!-- End Sidebar-->
