@@ -186,7 +186,7 @@
                     </div>
                     @php
                         $interestheads = Get::interest();
-                        $years = $interestheads->pluck('fiscal_year')->unique();
+                       $years = $interestheads->pluck('fiscal_year')->unique()->sortByDesc(function ($item) { return $item->title;});
                     @endphp
                     <div class="accordion" id="accordionExample">
                         @foreach ($years as $year)

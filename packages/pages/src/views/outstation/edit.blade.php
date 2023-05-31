@@ -102,7 +102,7 @@
                         <div class="col-4">
                             <label for="actual-return-time" class="input-label">Actual Return Time</label>
                             <div class="input-group has-validation">
-                                <input type="time" class="form-control" id="actual-return-time" name="actual_return_time" value="{{ old('$item->actual_return_time', $item->actual_return_time)}}"placeholder="Actual Return Time*" required>
+                                <input type="time" class="form-control" id="actual-return-time" name="actual_return_time" value="{{ old('$item->actual_return_time', $item->actual_return_time)}}"placeholder="Actual Return Time*" >
                                 @error('actual_return_time')
                                 <div class="invalid-feedback">
                                     required actual-return-time

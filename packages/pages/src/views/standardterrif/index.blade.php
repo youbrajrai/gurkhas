@@ -48,7 +48,7 @@
                                         style="background-color: #eff3fd; padding-top: 2%; margin:0px;">
                                         <div class="container card mb-4 bg-light">
                                             @php
-                                                $years = $standard_terrif_heads->pluck('fiscal_year')->unique();
+                                                $years = $standard_terrif_heads->pluck('fiscal_year')->unique()->sortByDesc(function ($item) { return $item->title;});
                                             @endphp
                                             <div class="accordion" id="accordionExample">
                                                 @foreach ($years as $year)

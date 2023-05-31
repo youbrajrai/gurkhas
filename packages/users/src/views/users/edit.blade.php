@@ -94,7 +94,7 @@
                                             <div class="input-group has-validation">
                                                 <input type="text" class="form-control" name="contact_no" id="contact_no"
                                                     value="{{ old('contact_no', $item->contact_no) }}"
-                                                    placeholder="Contact Number*" required>
+                                                    placeholder="Contact Number*" >
                                                 @error('contact_no')
                                                     <div class="invalid-feedback">
                                                         required contact_no

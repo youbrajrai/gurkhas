@@ -26,6 +26,15 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            $user->employeeDetails()->delete();
+        });
+    }
+
     protected $fillable = [
         'employee_code',
         'name',

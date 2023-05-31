@@ -91,7 +91,7 @@
                                         <div class="col-4">
                                             <label for="insurance_amount" class="input-label">Insurance Amount</label>
                                             <div class="input-group has-validation">
-                                                <input type="number" class="form-control" name="insurance_amount"
+                                                <input type="number" min="1" step="0.01" class="form-control" name="insurance_amount"
                                                     id="insurance_amount" placeholder="Insurance Amount*" required>
                                                 @error('insurance_amount')
                                                     <div class="invalid-feedback d-block">

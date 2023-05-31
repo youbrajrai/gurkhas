@@ -193,7 +193,7 @@
                                                     <div class="input-group has-validation">
                                                         <input type="time" class="form-control"
                                                             id="actual-return-time" name="actual_return_time"
-                                                            placeholder="Actual Return Time*" required>
+                                                            placeholder="Actual Return Time">
                                                         <div class="invalid-feedback">
                                                             required actual-return-time
                                                         </div>

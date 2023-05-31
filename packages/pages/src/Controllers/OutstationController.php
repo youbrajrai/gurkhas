@@ -15,7 +15,7 @@ class OutstationController extends CrudController
             'travel_place' => ['required','string', 'max:255'],
             'outtime' => ['required'],
             'estimated_return_time' => ['required'],
-            'actual_return_time' => ['required'],
+            'actual_return_time' => ['nullable'],
             'remarks' => ['nullable','string','max:255']
 
         ];
@@ -24,7 +24,7 @@ class OutstationController extends CrudController
             'travel_place' => ['required','string', 'max:255'],
             'outtime' => ['required'],
             'estimated_return_time' => ['required'],
-            'actual_return_time' => ['required'],
+            'actual_return_time' => ['nullable'],
             'remarks' => ['nullable','string','max:255']
 
         ];

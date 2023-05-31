@@ -152,9 +152,9 @@
                                                 @foreach ($datas as $key => $data)
                                                     <tr>
                                                         <th scope="row">{{ $key + 1 }}</th>
-                                                        <td>{{ $data->user->employee_code }}</td>
+                                                        <td>{{ $data->user?->employee_code }}</td>
                                                         <td><a target="_blank"
-                                                                href="{{ url(basename(storage_path()) . '/' . $data->user->media?->file_path) }}"><i
+                                                                href="{{ url(basename(storage_path()) . '/' . $data->user?->media?->file_path) }}"><i
                                                                     class="bi bi-image px-3"></i></a>
                                                         </td>
                                                         <td>{{ $data->order }}</td>
@@ -175,13 +175,14 @@
                                                         <td>{{ $data->user?->email }}</td>
                                                         <td>{{ $data->user?->joined_date }}</td>
                                                         <td>
+                                                            @if($data->user)
                                                             <div class="container-fluid d-flex">
                                                                 @can('user_edit')
                                                                     <a href="{{ route('user.edit', $data->user->id) }}"><i
                                                                             class="bi bi-pencil-square"></i></a>
                                                                 @endcan
                                                                 @can('user_delete')
-                                                                    <form action="{{ route('user.destroy', $data->user->id) }}"
+                                                                    <form action="{{ route('user.destroy', $data->user?->id) }}"
                                                                         method="POST">
                                                                         @csrf @method('DELETE')
                                                                         <button
@@ -192,6 +193,9 @@
                                                                     </form>
                                                                 @endcan
                                                             </div>
+                                                            {{-- @else
+                                                            @dd($data->delete()) --}}
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -280,7 +284,7 @@
                                                     <label for="contact_no" class="input-label">Contact Number</label>
                                                     <div class="input-group has-validation">
                                                         <input type="text" class="form-control" name="contact_no"
-                                                            id="contact_no" placeholder="Contact Number*" required>
+                                                            id="contact_no" placeholder="Contact Number*" >
                                                         @error('contact_no')
                                                             <div class="invalid-feedback d-block">
                                                                 required contact_no
