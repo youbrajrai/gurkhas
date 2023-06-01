@@ -167,7 +167,7 @@
                                                 <div class="col-4">
                                                     <label for="out-time" class="input-label">Out Time</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="time" class="form-control" id="out-time"
+                                                        <input type="text" class="form-control date_time_picker" id="out-time"
                                                             name="outtime" placeholder="Out Time*" required>
                                                         <div class="invalid-feedback">
                                                             required out-time
@@ -179,7 +179,7 @@
                                                         Return
                                                         Time</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="time" class="form-control"
+                                                        <input type="text" class="form-control date_time_picker"
                                                             id="estimated-return-time" name="estimated_return_time"
                                                             placeholder="Estimiated Return Time*" required>
                                                         <div class="invalid-feedback">
@@ -191,7 +191,7 @@
                                                     <label for="actual-return-time" class="input-label">Actual Return
                                                         Time</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="time" class="form-control"
+                                                        <input type="text" class="form-control date_time_picker"
                                                             id="actual-return-time" name="actual_return_time"
                                                             placeholder="Actual Return Time">
                                                         <div class="invalid-feedback">
