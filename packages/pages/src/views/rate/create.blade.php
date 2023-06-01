@@ -35,7 +35,7 @@
                                         <div class="col-4">
                                             <label for="base-rate" class="input-label">Base Rate</label>
                                             <div class="input-group has-validation">
-                                                <input type="number" class="form-control" id="base-rate" name="base_rate"
+                                                <input type="number" min="1" step="0.01" class="form-control" id="base-rate" name="base_rate"
                                                     placeholder="Base Rate*" required>
                                                 @error('base_rate')
                                                     <div class="invalid-feedback">
@@ -47,7 +47,7 @@
                                         <div class="col-4">
                                             <label for="spread-rate" class="input-label">Spread Rate</label>
                                             <div class="input-group has-validation">
-                                                <input type="number" class="form-control" id="spread-rate"
+                                                <input type="number" min="1" step="0.01" class="form-control" id="spread-rate"
                                                     name="spread_rate" placeholder="Spread Rate*" required>
                                                 @error('spread_rate')
                                                     <div class="invalid-feedback">
@@ -59,7 +59,7 @@
                                         <div class="col-4">
                                             <label for="cost-of-fund" class="input-label">Cost of Fund</label>
                                             <div class="input-group has-validation">
-                                                <input type="number" class="form-control" id="cost-of-fund"
+                                                <input type="number" min="1" step="0.01" class="form-control" id="cost-of-fund"
                                                     name="cost_fund" placeholder="Cost of Fund*" required>
                                                 @error('cost_fund')
                                                     <div class="invalid-feedback">
@@ -75,7 +75,7 @@
                                         <div class="col-4">
                                             <label for="yield-rate" class="input-label">Yield Rate</label>
                                             <div class="input-group has-validation">
-                                                <input type="number" class="form-control" id="yield-rate" name="yield_rate"
+                                                <input type="number" min="1" step="0.01" class="form-control" id="yield-rate" name="yield_rate"
                                                     placeholder="Yield Rate*" required>
                                                 @error('yield_rate')
                                                     <div class="invalid-feedback">
@@ -104,7 +104,7 @@
                                         <div class="col-4">
                                             <label for="year" class="input-label">Year</label>
                                             <div class="input-group has-validation">
-                                                <input type="number" class="form-control" id="year" name="year"
+                                                <input type="number" min="1" step="0.01" class="form-control" id="year" name="year"
                                                     placeholder="Year*" required>
                                                 @error('year')
                                                     <div class="invalid-feedback">

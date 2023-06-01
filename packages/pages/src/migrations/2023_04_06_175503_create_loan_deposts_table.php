@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('loan_deposits', function (Blueprint $table) {
             $table->id();
             $table->foreignId('branch_id')->constrained()->cascadeOnDelete();
-            $table->float('loan_issued');
-            $table->float('deposit');
+            $table->float('loan_issued',12);
+            $table->float('deposit',12);
             $table->date('created_date');
             $table->timestamps();
         });

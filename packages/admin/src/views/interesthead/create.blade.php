@@ -61,7 +61,7 @@
                                         <div class="col-4">
                                             <label for="year" class="input-label">Year</label>
                                             <div class="input-group has-validation">
-                                                <input type="number" class="form-control" id="year" name="year"
+                                                <input type="number" min="1" step="0.01" class="form-control" id="year" name="year"
                                                     placeholder="Year*" required>
                                                 @error('year')
                                                     <div class="invalid-feedback">

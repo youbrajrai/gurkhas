@@ -154,8 +154,8 @@
                                                 <div class="col-4">
                                                     <label for="loan_issued" class="input-label">Loan</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="number" class="form-control" id="loan_issued"
-                                                            name="loan_issued" min=0 placeholder="Loan*" required>
+                                                        <input type="number" min="1" step="0.01" class="form-control" id="loan_issued"
+                                                            name="loan_issued" placeholder="Loan*" required>
                                                         @error('loan_issued')
                                                             <div class="invalid-feedback">
                                                                 required loan_issued
@@ -166,8 +166,8 @@
                                                 <div class="col-4">
                                                     <label for="deposit" class="input-label">Deposit</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="number" class="form-control" id="deposit"
-                                                            name="deposit" min=0 placeholder="Deposit*" required>
+                                                        <input type="number" min="1" step="0.01" class="form-control" id="deposit"
+                                                            name="deposit" placeholder="Deposit*" required>
                                                         @error('deposit')
                                                             <div class="invalid-feedback">
                                                                 required deposit

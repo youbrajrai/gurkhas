@@ -6,3 +6,4 @@ public
 .gitlab-ci.yml
 .env
 ./vendor
+vendor

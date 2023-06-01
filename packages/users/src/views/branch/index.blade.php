@@ -219,7 +219,7 @@
                                                 </div>
                                                 <div class="col-3">
                                                     <div class="input-group has-validation">
-                                                        <input type="number" class="form-control" id="ward_no"
+                                                        <input type="number" min="1" step="0.01" class="form-control" id="ward_no"
                                                             name="ward_no" placeholder="Ward no*" required>
                                                         @error('ward_no')
                                                             <div class="invalid-feedback">

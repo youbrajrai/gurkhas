@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->float('base_rate');
             $table->float('spread_rate');
-            $table->float('cost_fund');
+            $table->float('cost_fund',12);
             $table->float('yield_rate');
             $table->string('month');
             $table->integer('year');

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('branch_id')->constrained()->cascadeOnDelete();
             $table->string('insurance_company');
-            $table->float('insurance_amount');
+            $table->float('insurance_amount',12);
             $table->text('insurance_start_date');
             $table->text('insurance_expiry_date');
             $table->timestamps();
