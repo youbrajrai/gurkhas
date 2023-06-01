@@ -4,3 +4,5 @@ public
 .vscode
 .idea
 .gitlab-ci.yml
+.env
+./vendor

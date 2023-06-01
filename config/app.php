@@ -185,7 +185,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Chatify\ChatifyServiceProvider::class,
         User\UserServiceProvider::class,
         Pages\PagesServiceProvider::class,
         Admin\AdminServiceProvider::class,

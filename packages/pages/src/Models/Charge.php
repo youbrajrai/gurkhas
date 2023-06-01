@@ -16,6 +16,6 @@ class Charge extends Model
     ];
     public function chargetype()
     {
-        return $this->belongsToMany(ChargeType::class,'charges_chargeType','charge_id','chargeType_id');
+        return $this->belongsToMany(ChargeType::class,'charges_charge_type','charge_id','charge_type_id');
     }
 }

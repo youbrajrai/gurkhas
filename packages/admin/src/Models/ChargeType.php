@@ -10,12 +10,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class ChargeType extends Model
 {
     use HasFactory,RelationshipsTrait;
-    protected $table = 'chargeType';
+    protected $table = 'charge_types';
     protected $fillable = [
         'title'
     ];
     public function Charge(){
-        return $this->belongsToMany(Charge::class,'charges_chargeType','charge_id','chargeType_id');
+        return $this->belongsToMany(Charge::class,'charges_charge_type','charge_id','charge_type_id');
     }
 
 }

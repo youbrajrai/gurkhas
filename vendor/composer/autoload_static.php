@@ -524,8 +524,7 @@ class ComposerStaticInit6d4f7c482c6aac6c2409fbf06477db01
         ),
         'Chatify\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/packages/chatify/src',
-            1 => __DIR__ . '/..' . '/munafio/chatify/src',
+            0 => __DIR__ . '/..' . '/munafio/chatify/src',
         ),
         'Carbon\\' => 
         array (
@@ -719,14 +718,14 @@ class ComposerStaticInit6d4f7c482c6aac6c2409fbf06477db01
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
         'Carbon\\TranslatorImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/TranslatorImmutable.php',
         'Carbon\\TranslatorStrongTypeInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/TranslatorStrongTypeInterface.php',
-        'Chatify\\ChatifyMessenger' => __DIR__ . '/../..' . '/packages/chatify/src/ChatifyMessenger.php',
-        'Chatify\\ChatifyServiceProvider' => __DIR__ . '/../..' . '/packages/chatify/src/ChatifyServiceProvider.php',
-        'Chatify\\Console\\InstallCommand' => __DIR__ . '/../..' . '/packages/chatify/src/Console/InstallCommand.php',
-        'Chatify\\Console\\PublishCommand' => __DIR__ . '/../..' . '/packages/chatify/src/Console/PublishCommand.php',
-        'Chatify\\Facades\\ChatifyMessenger' => __DIR__ . '/../..' . '/packages/chatify/src/Facades/ChatifyMessenger.php',
-        'Chatify\\Http\\Controllers\\Api\\MessagesController' => __DIR__ . '/../..' . '/packages/chatify/src/Http/Controllers/Api/MessagesController.php',
-        'Chatify\\Http\\Controllers\\MessagesController' => __DIR__ . '/../..' . '/packages/chatify/src/Http/Controllers/MessagesController.php',
-        'Chatify\\Traits\\UUID' => __DIR__ . '/../..' . '/packages/chatify/src/Traits/UUID.php',
+        'Chatify\\ChatifyMessenger' => __DIR__ . '/..' . '/munafio/chatify/src/ChatifyMessenger.php',
+        'Chatify\\ChatifyServiceProvider' => __DIR__ . '/..' . '/munafio/chatify/src/ChatifyServiceProvider.php',
+        'Chatify\\Console\\InstallCommand' => __DIR__ . '/..' . '/munafio/chatify/src/Console/InstallCommand.php',
+        'Chatify\\Console\\PublishCommand' => __DIR__ . '/..' . '/munafio/chatify/src/Console/PublishCommand.php',
+        'Chatify\\Facades\\ChatifyMessenger' => __DIR__ . '/..' . '/munafio/chatify/src/Facades/ChatifyMessenger.php',
+        'Chatify\\Http\\Controllers\\Api\\MessagesController' => __DIR__ . '/..' . '/munafio/chatify/src/Http/Controllers/Api/MessagesController.php',
+        'Chatify\\Http\\Controllers\\MessagesController' => __DIR__ . '/..' . '/munafio/chatify/src/Http/Controllers/MessagesController.php',
+        'Chatify\\Traits\\UUID' => __DIR__ . '/..' . '/munafio/chatify/src/Traits/UUID.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',

@@ -11,13 +11,13 @@ class ChargeController extends CrudController
     public function __construct(Request $request,Charge $charge,ChargeType $chargetype)
     {
         $validation_rule[0] =[
-            'chargeType_id' => ['required'],
+            'charge_type_id' => ['required'],
             'title' => ['required'],
             'rate' => ['required'],
 
         ];
         $validation_rule[1] =[
-            'chargeType_id' => ['required'],
+            'charge_type_id' => ['required'],
             'title' => ['required'],
             'rate' => ['required'],
 

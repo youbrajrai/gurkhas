@@ -36,7 +36,6 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
-            "Chatify\\": "packages/chatify/src/",
             "User\\": "packages/users/src/",
             "Pages\\": "packages/pages/src/",
             "Admin\\": "packages/admin/src/",

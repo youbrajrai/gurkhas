@@ -34,7 +34,7 @@
                                     <div class="col-4">
                                         <label for="charge-type" class="input-label">Charge Type</label>
                                         <div class="input-group has-validation">
-                                            <select id="charge-type" name="chargeType_id" class="form-select" required>
+                                            <select id="charge-type" name="charge_type_id" class="form-select" required>
                                                 <option value="">Choose...</option>
                                                 @foreach($variables['chargetype'] as $data)
                                                     <option value="{{$data->id}}" {{$item->chargetype->contains($data->id)?'selected':''}}>{{ $data->title }}</option>

@@ -32,8 +32,8 @@
                     <tr>
                         <th scope="row">{{ $key+1 }}</th>
                         <td>
-                            @foreach($data->chargetype as $chargeType)
-                                {{$chargeType->title}}
+                            @foreach($data->chargetype as $charge_type)
+                                {{$charge_type->title}}
                             @endforeach
                         <td>{{$data->title}}</td>
                         <td>{{$data->rate}}</td>
