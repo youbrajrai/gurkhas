@@ -65,11 +65,14 @@
                                             <div class="input-group has-validation">
                                                 <select id="leave-type" class="form-select" name="leave_type" required>
                                                     <option value="">Choose Leave Type...</option>
-                                                    <option value="paid" {{ $item->leave_type == 'paid' ? 'selected' : '' }}>
+                                                    <option value="paid"
+                                                        {{ $item->leave_type == 'paid' ? 'selected' : '' }}>
                                                         Paid</option>
-                                                    <option value="unpaid" {{ $item->leave_type == 'unpaid' ? 'selected' : '' }}>
+                                                    <option value="unpaid"
+                                                        {{ $item->leave_type == 'unpaid' ? 'selected' : '' }}>
                                                         UnPaid</option>
-                                                    <option value="sick" {{ $item->leave_type == 'sick' ? 'selected' : '' }}>
+                                                    <option value="sick"
+                                                        {{ $item->leave_type == 'sick' ? 'selected' : '' }}>
                                                         Sick</option>
                                                 </select>
                                                 @error('leave_type')
@@ -86,9 +89,18 @@
                                         <div class="col-3">
                                             <label for="leave-from" class="input-label">Leave From</label>
                                             <div class="input-group has-validation">
-                                                <input type="text" class="form-control date-picker" id="leave-from"
-                                                    name="leave_from" value="{{ old('leave_from', $item->leave_from) }}"
+                                                <input type="text" class="form-control" id="nepali-leave-from"
                                                     placeholder="Leave From*" required>
+                                                @error('leave_from')
+                                                    <div class="invalid-feedback">
+                                                        required leave-from
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <div class="input-group has-validation">
+                                                <input type="text" class="form-control" id="leave-from" name="leave_from"
+                                                    value="{{ old('leave_from', $item->leave_from) }}"
+                                                    placeholder="Leave From*" required readonly>
                                                 @error('leave_from')
                                                     <div class="invalid-feedback">
                                                         required leave-from
@@ -99,9 +111,18 @@
                                         <div class="col-3">
                                             <label for="leave-to" class="input-label">Leave To</label>
                                             <div class="input-group has-validation">
-                                                <input type="text" class="form-control date-picker" id="leave-to"
-                                                    name="leave_to" value="{{ old('leave_to', $item->leave_to) }}"
+                                                <input type="text" class="form-control" id="nepali-leave-to"
                                                     placeholder="Leave To*" required>
+                                                @error('leave_to')
+                                                    <div class="invalid-feedback">
+                                                        required leave-to
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <div class="input-group has-validation">
+                                                <input type="text" class="form-control" id="leave-to" name="leave_to"
+                                                    value="{{ old('leave_to', $item->leave_to) }}" placeholder="Leave To*"
+                                                    required readonly>
                                                 @error('leave_to')
                                                     <div class="invalid-feedback">
                                                         required leave-to
@@ -146,6 +167,30 @@
                     val.trigger("change");
                 }
             })
+        });
+    </script>
+    <script>
+        $('#nepali-leave-from').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#nepali-leave-from').on("dateChange", function(event) {
+
+            var formattedDate = event.datePickerData.adDate.toISOString().substr(0,
+                10); // Format the date as YYYY-MM-DD
+
+            $('#leave-from').val(formattedDate)
+        });
+        $('#nepali-leave-to').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#nepali-leave-to').on("dateChange", function(event) {
+
+            var formattedDate = event.datePickerData.adDate.toISOString().substr(0,
+                10); // Format the date as YYYY-MM-DD
+
+            $('#leave-to').val(formattedDate)
         });
     </script>
 @endsection

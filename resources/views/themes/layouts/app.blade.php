@@ -550,7 +550,7 @@
 </script>
 <script>
     $('.date-picker').nepaliDatePicker({
-        dateFormat: '%D, %M %d, %y',
+        dateFormat: '%y-%m-%d',
         closeOnDateSelect: true,
     });
 </script>
