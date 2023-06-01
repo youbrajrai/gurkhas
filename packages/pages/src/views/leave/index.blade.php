@@ -186,46 +186,44 @@
                                                 <div class="col-3">
                                                     <label for="leave-from" class="input-label">Leave From</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="text" class="form-control"
-                                                            id="created_date_nepali" id="leave-from"
-                                                            placeholder="Leave From*" required>
+                                                        <input type="text" class="form-control" id="nepali-leave-from"
+                                                               placeholder="Leave From*" required>
                                                         @error('leave_from')
-                                                            <div class="invalid-feedback">
-                                                                required leave-from
-                                                            </div>
+                                                        <div class="invalid-feedback">
+                                                            required leave-from
+                                                        </div>
                                                         @enderror
                                                     </div>
                                                     <div class="input-group has-validation">
-                                                        <input type="date" class="form-control" id="created_date"
-                                                            id="leave-from" name="leave_from" placeholder="Leave From*"
-                                                            required>
+                                                        <input type="date" class="form-control" id="leave-from" name="leave_from"
+                                                               value="{{ old('leave_from') }}"
+                                                               placeholder="Leave From*" required readonly>
                                                         @error('leave_from')
-                                                            <div class="invalid-feedback">
-                                                                required leave-from
-                                                            </div>
+                                                        <div class="invalid-feedback">
+                                                            required leave-from
+                                                        </div>
                                                         @enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-3">
                                                     <label for="leave-to" class="input-label">Leave To</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="text" class="form-control"
-                                                            id="to_nepali_date_picker" id="leave-to"
-                                                            placeholder="Leave To*" required>
+                                                        <input type="text" class="form-control" id="nepali-leave-to"
+                                                               placeholder="Leave To*" required>
                                                         @error('leave_to')
-                                                            <div class="invalid-feedback">
-                                                                required leave-to
-                                                            </div>
+                                                        <div class="invalid-feedback">
+                                                            required leave-to
+                                                        </div>
                                                         @enderror
                                                     </div>
                                                     <div class="input-group has-validation">
-                                                        <input type="date" class="form-control" id="to_date"
-                                                            id="leave-to" name="leave_to" placeholder="Leave To*"
-                                                            required>
+                                                        <input type="date" class="form-control" id="leave-to" name="leave_to"
+                                                               value="{{ old('leave_to') }}" placeholder="Leave To*"
+                                                               required readonly>
                                                         @error('leave_to')
-                                                            <div class="invalid-feedback">
-                                                                required leave-to
-                                                            </div>
+                                                        <div class="invalid-feedback">
+                                                            required leave-to
+                                                        </div>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -255,27 +253,25 @@
         });
     </script>
     <script>
-        $('#created_date_nepali').nepaliDatePicker({
+        $('#nepali-leave-from').nepaliDatePicker({
             dateFormat: '%y-%m-%d',
             closeOnDateSelect: true,
         });
-        $('#created_date_nepali').on("dateChange", function(event) {
+        $('#nepali-leave-from').on("dateChange", function(event) {
 
-            var formattedDate = event.datePickerData.adDate.toISOString().substr(0,
-                10); // Format the date as YYYY-MM-DD
+            let formattedDate = event.datePickerData.adDate.toISOString().substr(0,10); // Format the date as YYYY-MM-DD
 
-            $('#created_date').val(formattedDate)
+            $('#leave-from').val(formattedDate)
         });
-        $('#to_nepali_date_picker').nepaliDatePicker({
+        $('#nepali-leave-to').nepaliDatePicker({
             dateFormat: '%y-%m-%d',
             closeOnDateSelect: true,
         });
-        $('#to_nepali_date_picker').on("dateChange", function(event) {
+        $('#nepali-leave-to').on("dateChange", function(event) {
 
-            var formattedDate = event.datePickerData.adDate.toISOString().substr(0,
-                10); // Format the date as YYYY-MM-DD
+            let formattedDate = event.datePickerData.adDate.toISOString().substr(0,10);  // Format the date as YYYY-MM-DD
 
-            $('#to_date').val(formattedDate)
+            $('#leave-to').val(formattedDate)
         });
     </script>
 @endsection

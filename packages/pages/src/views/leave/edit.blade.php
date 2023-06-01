@@ -98,7 +98,7 @@
                                                 @enderror
                                             </div>
                                             <div class="input-group has-validation">
-                                                <input type="text" class="form-control" id="leave-from" name="leave_from"
+                                                <input type="date" class="form-control" id="leave-from" name="leave_from"
                                                     value="{{ old('leave_from', $item->leave_from) }}"
                                                     placeholder="Leave From*" required readonly>
                                                 @error('leave_from')
@@ -120,7 +120,7 @@
                                                 @enderror
                                             </div>
                                             <div class="input-group has-validation">
-                                                <input type="text" class="form-control" id="leave-to" name="leave_to"
+                                                <input type="date" class="form-control" id="leave-to" name="leave_to"
                                                     value="{{ old('leave_to', $item->leave_to) }}" placeholder="Leave To*"
                                                     required readonly>
                                                 @error('leave_to')
@@ -176,8 +176,7 @@
         });
         $('#nepali-leave-from').on("dateChange", function(event) {
 
-            var formattedDate = event.datePickerData.adDate.toISOString().substr(0,
-                10); // Format the date as YYYY-MM-DD
+            let formattedDate = event.datePickerData.adDate.toISOString().substr(0,10); // Format the date as YYYY-MM-DD
 
             $('#leave-from').val(formattedDate)
         });
@@ -187,8 +186,7 @@
         });
         $('#nepali-leave-to').on("dateChange", function(event) {
 
-            var formattedDate = event.datePickerData.adDate.toISOString().substr(0,
-                10); // Format the date as YYYY-MM-DD
+            let formattedDate = event.datePickerData.adDate.toISOString().substr(0,10);  // Format the date as YYYY-MM-DD
 
             $('#leave-to').val(formattedDate)
         });

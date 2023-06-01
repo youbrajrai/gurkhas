@@ -38,11 +38,15 @@ class Get
     }
     public static function getTotalLeaves()
     {
+
+        $currentDateTime = Carbon::now();
         if (Auth::user()->isAdmin) {
-            $totalLeaves = Leave::all()->count();
+            $totalLeaves = Leave::where('leave_from', '<=', $currentDateTime)
+                ->where('leave_to', '>=', $currentDateTime)->count();
         } else {
             $branch = Auth::user()->employeeDetails->branch->id;
-            $totalLeaves = Leave::whereHas('user.employeeDetails.branch', function ($query) use ($branch) {
+            $totalLeaves = Leave::where('leave_from', '<=', $currentDateTime)
+                ->where('leave_to', '>=', $currentDateTime)->whereHas('user.employeeDetails.branch', function ($query) use ($branch) {
                 $query->where('id', $branch);
             })->count();
         }
@@ -50,11 +54,14 @@ class Get
     }
     public static function getTotalOutstation()
     {
+        $currentDateTime = Carbon::now();
         if (Auth::user()->isAdmin) {
-            $totalOutstation = Outstation::all()->count();
+            $totalOutstation = Outstation::where('outtime', '<=', $currentDateTime)
+                ->where('estimated_return_time', '>=', $currentDateTime)->count();
         } else {
             $branch = Auth::user()->employeeDetails->branch->id;
-            $totalOutstation = Outstation::whereHas('user.employeeDetails.branch', function ($query) use ($branch) {
+            $totalOutstation = Outstation::where('outtime', '<=', $currentDateTime)
+                ->where('estimated_return_time', '>=', $currentDateTime)->whereHas('user.employeeDetails.branch', function ($query) use ($branch) {
                 $query->where('id', $branch);
             })->count();
         }

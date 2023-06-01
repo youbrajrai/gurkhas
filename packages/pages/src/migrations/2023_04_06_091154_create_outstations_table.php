@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('travel_place');
-            $table->time("outtime");
-            $table->time("estimated_return_time");
-            $table->time("actual_return_time");
+            $table->datetime("outtime");
+            $table->datetime("estimated_return_time");
+            $table->datetime("actual_return_time");
             $table->text('remarks');
             $table->timestamps();
         });
