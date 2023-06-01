@@ -62,15 +62,23 @@
                                         <div class="col-4">
                                             <label for="date" class="input-label">Date</label>
                                             <div class="input-group has-validation">
-                                                <input type="text" class="form-control date-picker" id="date"
-                                                    name="on_date" placeholder="Date*"
-                                                    value="{{ old('on_date', $item->on_date) }}" required>
+                                                <input type="text" class="form-control" id="nepali_on_date"
+                                                    placeholder="Date*" required>
                                                 @error('on_date')
                                                     <div class="invalid-feedback">
                                                         required date
                                                     </div>
                                                 @enderror
-
+                                            </div>
+                                            <div class="input-group has-validation">
+                                                <input type="date" class="form-control" id="on_date" name="on_date"
+                                                    placeholder="Date*" value="{{ old('on_date', $item->on_date) }}"
+                                                    required>
+                                                @error('on_date')
+                                                    <div class="invalid-feedback">
+                                                        required date
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-4">
@@ -126,5 +134,18 @@
 @section('footer')
     <script>
         CKEDITOR.replace('description');
+    </script>
+    <script>
+        $('#nepali_on_date').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#nepali_on_date').on("dateChange", function(event) {
+
+            var formattedDate = event.datePickerData.adDate.toISOString().substr(0,
+                10); // Format the date as YYYY-MM-DD
+
+            $('#on_date').val(formattedDate)
+        });
     </script>
 @endsection

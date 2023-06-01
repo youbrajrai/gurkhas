@@ -106,15 +106,18 @@ class Get
     }
     public static function notices($paginate = 5)
     {
-        return Notice::where('created_at','>=',carbon::now())->orderBy('created_at', 'desc')->paginate($paginate, ["*"]);
+        return Notice::where('on_date', '>=', carbon::now())->orderBy('created_at', 'desc')->paginate($paginate, ["*"]);
     }
     public static function leaves()
     {
-        return Leave::where('created_at','>=',carbon::now())->orderBY('created_at', 'desc')->get();
+        return Leave::where('leave_from', '<=', carbon::now())->where('leave_to', '>=', carbon::now())->orderBY('created_at', 'desc')->get();
     }
     public static function outstations()
     {
-        return Outstation::where('created_at','>=',carbon::now())->orderBY('created_at', 'desc')->get();
+        $currentDateTime = Carbon::now();
+        $totalOutstation = Outstation::where('outtime', '<=', $currentDateTime)
+            ->where('actual_return_time', '>=', $currentDateTime)->get();
+        return $totalOutstation;
     }
     public static function branches()
     {

@@ -78,8 +78,22 @@
                                                     <th scope="row">{{ $key + 1 }}</th>
                                                     <td>{{ $data->user->employeeDetails?->branch?->title }}</td>
                                                     <td>{{ $data->user->name }}</td>
-                                                    <td>{{ $data->leave_from }}</td>
-                                                    <td>{{ $data->leave_to }}</td>
+                                                    <td>
+                                                        @php
+                                                            $date = \Carbon\Carbon::parse($data->leave_from);
+                                                            $dc = new \Nilambar\NepaliDate\NepaliDate();
+                                                            $nd = $dc->convertAdToBs($date->year, $date->month, $date->day);
+                                                            echo $nd['year'] . '-' . $nd['month'] . '-' . $nd['day'];
+                                                        @endphp
+                                                    </td>
+                                                    <td>
+                                                        @php
+                                                            $date = \Carbon\Carbon::parse($data->leave_to);
+                                                            $dc = new \Nilambar\NepaliDate\NepaliDate();
+                                                            $nd = $dc->convertAdToBs($date->year, $date->month, $date->day);
+                                                            echo $nd['year'] . '-' . $nd['month'] . '-' . $nd['day'];
+                                                        @endphp
+                                                    </td>
                                                     <td>{{ $data->leave_type }}</td>
                                                     <td>
                                                         <div class="container-fluid d-flex">
@@ -172,7 +186,17 @@
                                                 <div class="col-3">
                                                     <label for="leave-from" class="input-label">Leave From</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="text" class="form-control date-picker"
+                                                        <input type="text" class="form-control"
+                                                            id="created_date_nepali" id="leave-from"
+                                                            placeholder="Leave From*" required>
+                                                        @error('leave_from')
+                                                            <div class="invalid-feedback">
+                                                                required leave-from
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="input-group has-validation">
+                                                        <input type="date" class="form-control" id="created_date"
                                                             id="leave-from" name="leave_from" placeholder="Leave From*"
                                                             required>
                                                         @error('leave_from')
@@ -185,7 +209,17 @@
                                                 <div class="col-3">
                                                     <label for="leave-to" class="input-label">Leave To</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="text" class="form-control date-picker"
+                                                        <input type="text" class="form-control"
+                                                            id="to_nepali_date_picker" id="leave-to"
+                                                            placeholder="Leave To*" required>
+                                                        @error('leave_to')
+                                                            <div class="invalid-feedback">
+                                                                required leave-to
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="input-group has-validation">
+                                                        <input type="date" class="form-control" id="to_date"
                                                             id="leave-to" name="leave_to" placeholder="Leave To*"
                                                             required>
                                                         @error('leave_to')
@@ -218,6 +252,30 @@
     <script>
         $(function() {
             $('.select2').select2();
+        });
+    </script>
+    <script>
+        $('#created_date_nepali').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#created_date_nepali').on("dateChange", function(event) {
+
+            var formattedDate = event.datePickerData.adDate.toISOString().substr(0,
+                10); // Format the date as YYYY-MM-DD
+
+            $('#created_date').val(formattedDate)
+        });
+        $('#to_nepali_date_picker').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#to_nepali_date_picker').on("dateChange", function(event) {
+
+            var formattedDate = event.datePickerData.adDate.toISOString().substr(0,
+                10); // Format the date as YYYY-MM-DD
+
+            $('#to_date').val(formattedDate)
         });
     </script>
 @endsection

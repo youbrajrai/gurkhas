@@ -66,7 +66,14 @@
                                                     <td><a target="_blank" class="bi bi-file-earmark-break-fill px-5"
                                                             href="{{ url(basename(storage_path()) . '/' . $data?->media?->file_path) }}"><i></i></a>
                                                     </td>
-                                                    <td>{{ convertNepaliToEnglish($data?->on_date) }}</td>
+                                                    <td>
+                                                        @php
+                                                            $date = \Carbon\Carbon::parse($data?->on_date);
+                                                            $dc = new \Nilambar\NepaliDate\NepaliDate();
+                                                            $nd = $dc->convertAdToBs($date->year, $date->month, $date->day);
+                                                            echo $nd['year'] . '-' . $nd['month'] . '-' . $nd['day'];
+                                                        @endphp
+                                                    </td>
                                                     <td>
                                                         <div class="container-fluid d-flex">
                                                             @can('notice_edit')
@@ -284,15 +291,23 @@
                                                 <div class="col-4">
                                                     <label for="date" class="input-label">Date</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="text" value=""
-                                                            class="form-control date-picker" id="on_date"
-                                                            name="on_date" placeholder="Date*" required>
+                                                        <input type="text" value="" class="form-control"
+                                                            id="nepali_on_date" placeholder="Date*" required>
                                                         @error('on_date')
                                                             <div class="invalid-feedback">
                                                                 required on_date
                                                             </div>
                                                         @enderror
-
+                                                    </div>
+                                                    <div class="input-group has-validation">
+                                                        <input type="date" value="" class="form-control"
+                                                            id="on_date" name="on_date" placeholder="Date*" required
+                                                            readonly>
+                                                        @error('on_date')
+                                                            <div class="invalid-feedback">
+                                                                required on_date
+                                                            </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
@@ -346,4 +361,19 @@
         </section>
 
     </main><!-- End #main -->
+@endsection
+@section('footer')
+    <script>
+        $('#nepali_on_date').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#nepali_on_date').on("dateChange", function(event) {
+
+            var formattedDate = event.datePickerData.adDate.toISOString().substr(0,
+                10); // Format the date as YYYY-MM-DD
+
+            $('#on_date').val(formattedDate)
+        });
+    </script>
 @endsection
