@@ -142,8 +142,7 @@
         });
         $('#nepali_on_date').on("dateChange", function(event) {
 
-            var formattedDate = event.datePickerData.adDate.toISOString().substr(0,
-                10); // Format the date as YYYY-MM-DD
+            var formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
 
             $('#on_date').val(formattedDate)
         });

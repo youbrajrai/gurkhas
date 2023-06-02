@@ -41,12 +41,12 @@ class Get
 
         $currentDateTime = \Carbon\Carbon::now()->startOfDay();
         if (Auth::user()->isAdmin) {
-            $totalLeaves = Leave::whereDate('leave_from', '<=', $currentDateTime)
+            $totalLeaves = Leave::distinct("user_id")->whereDate('leave_from', '<=', $currentDateTime)
                 ->whereDate('leave_to', '>=', $currentDateTime)
                 ->count();
         } else {
             $branch = Auth::user()->employeeDetails->branch->id;
-            $totalLeaves = Leave::where('leave_from', '<=', $currentDateTime)
+            $totalLeaves = Leave::distinct("user_id")->where('leave_from', '<=', $currentDateTime)
                 ->where('leave_to', '>=', $currentDateTime)->whereHas('user.employeeDetails.branch', function ($query) use ($branch) {
                 $query->where('id', $branch);
             })->count();
@@ -57,11 +57,11 @@ class Get
     {
         $currentDateTime = Carbon::now();
         if (Auth::user()->isAdmin) {
-            $totalOutstation = Outstation::where('outtime', '<=', $currentDateTime)
+            $totalOutstation = Outstation::distinct("user_id")->where('outtime', '<=', $currentDateTime)
                 ->where('estimated_return_time', '>=', $currentDateTime)->count();
         } else {
             $branch = Auth::user()->employeeDetails->branch->id;
-            $totalOutstation = Outstation::where('outtime', '<=', $currentDateTime)
+            $totalOutstation = Outstation::distinct("user_id")->where('outtime', '<=', $currentDateTime)
                 ->where('estimated_return_time', '>=', $currentDateTime)->whereHas('user.employeeDetails.branch', function ($query) use ($branch) {
                 $query->where('id', $branch);
             })->count();
@@ -70,12 +70,12 @@ class Get
     }
     public static function getTotalLeaveTaken()
     {
-        $totalLeaveTaken = Leave::where('user_id', Auth::user()->id)->count();
+        $totalLeaveTaken = Leave::distinct("user_id")->where('user_id', Auth::user()->id)->count();
         return $totalLeaveTaken;
     }
     public static function getTotalOutstationTaken()
     {
-        $totalOutstationTaken = Outstation::where('user_id', Auth::user()->id)->count();
+        $totalOutstationTaken = Outstation::distinct("user_id")->where('user_id', Auth::user()->id)->count();
         return $totalOutstationTaken;
     }
     public static function rates()
@@ -114,17 +114,17 @@ class Get
     }
     public static function notices($paginate = 5)
     {
-        return Notice::where('on_date', '>=', carbon::now())->orderBy('created_at', 'desc')->paginate($paginate, ["*"]);
+        return Notice::whereDate('on_date', '>=', carbon::now())->orderBy('created_at', 'desc')->paginate($paginate, ["*"]);
     }
     public static function leaves()
     {
-        return Leave::where('leave_from', '<=', carbon::now())->where('leave_to', '>=', carbon::now())->orderBY('created_at', 'desc')->get();
+        return Leave::distinct("user_id")->whereDate('leave_from', '<=', carbon::now())->whereDate('leave_to', '>=', carbon::now())->orderBY('created_at', 'desc')->get();
     }
     public static function outstations()
     {
         $currentDateTime = Carbon::now();
-        $totalOutstation = Outstation::where('outtime', '<=', $currentDateTime)
-            ->where('actual_return_time', '>=', $currentDateTime)->get();
+        $totalOutstation = Outstation::distinct("user_id")->whereDate('outtime', '<=', $currentDateTime)
+            ->whereDate('estimated_return_time', '>=', $currentDateTime)->get();
         return $totalOutstation;
     }
     public static function branches()
@@ -309,60 +309,7 @@ class Get
             }, 0);
             // dump($nextStart);
         }
-        // dd($data);
         return $data;
-        // $datas = [
-        //     "time" => [],
-        //     "loan_issued" => [],
-        //     "deposit" => [],
-        // ];
-        // $current_date = now()->format('Y-m-d');
-        // $date = \Carbon\Carbon::parse($current_date);
-        // $year = $date->year;
-        // $month = $date->month;
-        // if ($filterBY == "month") {
-        //     $vals = LoanDeposit::whereHas('branch', function ($query) {
-        //         $query->where('id', Auth::user()->employeeDetails->branch->id);
-        //     })->whereYear('created_date', $year)->whereMonth('created_date', $month)->get();
-        //     foreach ($vals as $val) {
-        //         $nep_date = toNepaliDate($val->created_at);
-        //         $val_date = \Carbon\Carbon::parse($nep_date);
-        //         $val_month = $val_date->month;
-        //         foreach (config('nepali-months') as $item) {
-        //             if ($item['value'] == $val_month) {
-        //                 $datas['time'][] = $item['name'];
-        //             }
-        //         }
-        //         $datas['loan_issued'][] = $val->loan_issued;
-        //         $datas['deposit'][] = $val->deposit;
-        //     }
-
-        // } else if ($filterBY == "year") {
-        //     $vals = LoanDeposit::whereHas('branch', function ($query) {
-        //         $query->where('id', Auth::user()->employeeDetails->branch->id);
-        //     })->whereYear('created_date', $year)->get();
-        //     foreach ($vals as $val) {
-        //         $nep_date = toNepaliDate($val->created_at);
-        //         $val_date = \Carbon\Carbon::parse($nep_date);
-        //         $val_year = $val_date->year;
-        //         $datas['time'][] = $val_year;
-        //         $datas['loan_issued'][] = $val->loan_issued;
-        //         $datas['deposit'][] = $val->deposit;
-        //     }
-        // } else {
-        //     $vals = LoanDeposit::whereHas('branch', function ($query) {
-        //         $query->where('id', Auth::user()->employeeDetails->branch->id);
-        //     })->orderBy('created_date', 'desc')->get();
-        //     foreach ($vals as $val) {
-        //         $nep_date = toNepaliDate($val->created_at);
-        //         $val_date = \Carbon\Carbon::parse($nep_date);
-        //         $val_year = $val_date->year;
-        //         $datas['time'][] = $nep_date;
-        //         $datas['loan_issued'][] = $val->loan_issued;
-        //         $datas['deposit'][] = $val->deposit;
-        //     }
-        // }
-        // return collect($datas);
     }
     public static function get_branches()
     {
