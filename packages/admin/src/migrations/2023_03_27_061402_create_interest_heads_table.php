@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('interest_heads', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->unique();
             $table->string('month');
             $table->foreignId('fiscal_year_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
