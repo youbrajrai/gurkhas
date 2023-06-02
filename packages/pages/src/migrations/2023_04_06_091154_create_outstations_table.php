@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('travel_place');
             $table->datetime("outtime");
             $table->datetime("estimated_return_time");
-            $table->datetime("actual_return_time");
+            $table->datetime("actual_return_time")->nullable();
             $table->text('remarks');
             $table->timestamps();
         });

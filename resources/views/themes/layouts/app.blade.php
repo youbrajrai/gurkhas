@@ -504,7 +504,7 @@
 <link rel="stylesheet" href="https://unpkg.com/nepali-date-picker@2.0.1/dist/nepaliDatePicker.min.css"
       crossorigin="anonymous"/>
 
-{{--<script src="{{ asset('datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>--}}
+<script src="{{ asset('datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
 <script src="{{ asset('datetimepicker/jquery.datetimepicker.min.js') }}"></script>
 {{-- <script src="{{ asset('js/chatify/code.js') }}"></script> --}}
 

@@ -168,7 +168,7 @@
                                                     <label for="out-time" class="input-label">Out Time</label>
                                                     <div class="input-group has-validation">
                                                         <input type="text" class="form-control date_time_picker" id="out-time"
-                                                            name="outtime" placeholder="Out Time*" required>
+                                                            name="outtime" value="{{old("outtime")}}" placeholder="Out Time*" required>
                                                         <div class="invalid-feedback">
                                                             required out-time
                                                         </div>
@@ -180,7 +180,7 @@
                                                         Time</label>
                                                     <div class="input-group has-validation">
                                                         <input type="text" class="form-control date_time_picker"
-                                                            id="estimated-return-time" name="estimated_return_time"
+                                                            id="estimated-return-time" name="estimated_return_time" value="{{old("estimated_return_time")}}"
                                                             placeholder="Estimiated Return Time*" required>
                                                         <div class="invalid-feedback">
                                                             required estimated-return-time
@@ -192,7 +192,7 @@
                                                         Time</label>
                                                     <div class="input-group has-validation">
                                                         <input type="text" class="form-control date_time_picker"
-                                                            id="actual-return-time" name="actual_return_time"
+                                                            id="actual-return-time" name="actual_return_time" value="{{old("actual_return_time")}}"
                                                             placeholder="Actual Return Time">
                                                         <div class="invalid-feedback">
                                                             required actual-return-time

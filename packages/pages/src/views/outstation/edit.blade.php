@@ -73,45 +73,45 @@
                           </div>
                     </div>
                   </div>
-                  <div class="container-fluid p-2 input-container2">
-                    <div class="row">
-                        <div class="col-4">
-                            <label for="out-time" class="input-label">Out Time</label>
-                            <div class="input-group has-validation">
-                                <input type="time" class="form-control" id="out-time" name="outtime" value="{{ old('$item->outtime', $item->outtime)}}" placeholder="Out Time*" required>
-                                @error('outtime')
-                                <div class="invalid-feedback">
-                                    required out-time
+                    <div class="container-fluid p-2 input-container2">
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="out-time" class="input-label">Out Time</label>
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control date_time_picker" id="out-time"
+                                           name="outtime" value="{{old("outtime",$item->outtime)}}" placeholder="Out Time*" required>
+                                    <div class="invalid-feedback">
+                                        required out-time
+                                    </div>
                                 </div>
-                                @enderror
-
                             </div>
-                        </div>
-                        <div class="col-4">
-                            <label for="estimated-return-time" class="input-label">Estimiated Return Time</label>
-                            <div class="input-group has-validation">
-                                <input type="time" class="form-control" id="estimated-return-time" name="estimated_return_time" value="{{ old('$item->estimated_return_time', $item->estimated_return_time)}}"placeholder="Estimiated Return Time*" required>
-                                @error('estimated_return_time')
-                                <div class="invalid-feedback">
-                                    required estimated-return-time
+                            <div class="col-4">
+                                <label for="estimated-return-time" class="input-label">Estimiated
+                                    Return
+                                    Time</label>
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control date_time_picker"
+                                           id="estimated-return-time" name="estimated_return_time" value="{{old("estimated_return_time",$item->estimated_return_time)}}"
+                                           placeholder="Estimiated Return Time*" required>
+                                    <div class="invalid-feedback">
+                                        required estimated-return-time
+                                    </div>
                                 </div>
-                                @enderror
-
                             </div>
-                        </div>
-                        <div class="col-4">
-                            <label for="actual-return-time" class="input-label">Actual Return Time</label>
-                            <div class="input-group has-validation">
-                                <input type="time" class="form-control" id="actual-return-time" name="actual_return_time" value="{{ old('$item->actual_return_time', $item->actual_return_time)}}"placeholder="Actual Return Time*" >
-                                @error('actual_return_time')
-                                <div class="invalid-feedback">
-                                    required actual-return-time
+                            <div class="col-4">
+                                <label for="actual-return-time" class="input-label">Actual Return
+                                    Time</label>
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control date_time_picker"
+                                           id="actual-return-time" name="actual_return_time" value="{{old("actual_return_time",$item->actual_return_time)}}"
+                                           placeholder="Actual Return Time">
+                                    <div class="invalid-feedback">
+                                        required actual-return-time
+                                    </div>
                                 </div>
-                                @enderror
                             </div>
                         </div>
                     </div>
-                  </div>
                   <div class="container-fluid p-2 input-container1">
                     <div class="col-4">
                         <label for="remarks" class="input-label">Remarks</label>
