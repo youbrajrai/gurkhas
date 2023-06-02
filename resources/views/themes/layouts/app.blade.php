@@ -311,7 +311,7 @@
         @endcan
 
 
-        <li class="nav-heading">Document Managment</li>
+        <li class="nav-heading">Document Management</li>
 
 
         @can('document')
@@ -405,8 +405,16 @@
                 </a>
             </li><!-- End Committe Level Nav -->
         @endcan
+        @can('subcommitteelevel_access')
+            <li class="nav-item">
+                <a class="nav-link {{ request()->getRequestUri() == '/subcommitteelevel' ? 'active' : '' }}"
+                   href="{{ route('subcommitteelevel.index') }}">
+                    <i class="bi bi-diagram-3"></i><span>Sub Committee Level</span>
+                </a>
+            </li><!-- End Committe Level Nav -->
+        @endcan
 
-        <li class="nav-heading">Authority Managment</li>
+        <li class="nav-heading">Authority Management</li>
         @can('charge')
             <li class="nav-item">
                 <a class="nav-link {{ request()->getRequestUri() == '/charge' ? 'active' : '' }}"

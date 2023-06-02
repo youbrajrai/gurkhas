@@ -24,7 +24,7 @@
                         @can('committeelevel_access')
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                                    type="button" role="tab" aria-controls="home" aria-selected="true">Commettee
+                                    type="button" role="tab" aria-controls="home" aria-selected="true">Committee
                                     Levels</button>
                             </li>
                         @endcan
