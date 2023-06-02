@@ -504,7 +504,7 @@
 <link rel="stylesheet" href="https://unpkg.com/nepali-date-picker@2.0.1/dist/nepaliDatePicker.min.css"
       crossorigin="anonymous"/>
 
-<script src="{{ asset('datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>
+{{--<script src="{{ asset('datetimepicker/jquery.datetimepicker.full.min.js') }}"></script>--}}
 <script src="{{ asset('datetimepicker/jquery.datetimepicker.min.js') }}"></script>
 {{-- <script src="{{ asset('js/chatify/code.js') }}"></script> --}}
 
@@ -571,6 +571,13 @@
         closeOnDateSelect: true,
     });
     $('.date_time_picker')?.datetimepicker();
+
+    function getDate(date) {
+        var year = date.getFullYear();
+        var month = ("0" + (date.getMonth() + 1)).slice(-2);
+        var day = ("0" + date.getDate()).slice(-2);
+        return year + "-" + month + "-" + day
+    }
 </script>
 </body>
 

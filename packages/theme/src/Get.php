@@ -39,10 +39,11 @@ class Get
     public static function getTotalLeaves()
     {
 
-        $currentDateTime = Carbon::now();
+        $currentDateTime = \Carbon\Carbon::now()->startOfDay();
         if (Auth::user()->isAdmin) {
-            $totalLeaves = Leave::where('leave_from', '<=', $currentDateTime)
-                ->where('leave_to', '>=', $currentDateTime)->count();
+            $totalLeaves = Leave::whereDate('leave_from', '<=', $currentDateTime)
+                ->whereDate('leave_to', '>=', $currentDateTime)
+                ->count();
         } else {
             $branch = Auth::user()->employeeDetails->branch->id;
             $totalLeaves = Leave::where('leave_from', '<=', $currentDateTime)

@@ -28,7 +28,7 @@
 
                             <!-- Vertical Form -->
                             <form class="row g-3 needs-validation" method="post"
-                                action="{{ route('leave.update', $item->id) }}" novalidate>
+                                  action="{{ route('leave.update', $item->id) }}" novalidate>
                                 @csrf
                                 @method('PUT')
                                 <div class="container-fluid p-2 input-container1">
@@ -45,7 +45,8 @@
                                                         })->get();
                                                     }
                                                 @endphp
-                                                <select id="staffname" class="form-select select2" name="user_id" required>
+                                                <select id="staffname" class="form-select select2" name="user_id"
+                                                        required>
                                                     <option value="">Choose Staff Name...</option>
                                                     @foreach ($users as $data)
                                                         <option value="{{ $data->id }}"
@@ -54,9 +55,9 @@
                                                     @endforeach
                                                 </select>
                                                 @error('user_id[]')
-                                                    <div class="invalid-feedback">
-                                                        Required staff name
-                                                    </div>
+                                                <div class="invalid-feedback">
+                                                    Required staff name
+                                                </div>
                                                 @enderror
                                             </div>
                                         </div>
@@ -67,18 +68,21 @@
                                                     <option value="">Choose Leave Type...</option>
                                                     <option value="paid"
                                                         {{ $item->leave_type == 'paid' ? 'selected' : '' }}>
-                                                        Paid</option>
+                                                        Paid
+                                                    </option>
                                                     <option value="unpaid"
                                                         {{ $item->leave_type == 'unpaid' ? 'selected' : '' }}>
-                                                        UnPaid</option>
+                                                        UnPaid
+                                                    </option>
                                                     <option value="sick"
                                                         {{ $item->leave_type == 'sick' ? 'selected' : '' }}>
-                                                        Sick</option>
+                                                        Sick
+                                                    </option>
                                                 </select>
                                                 @error('leave_type')
-                                                    <div class="invalid-feedback">
-                                                        required leave-type
-                                                    </div>
+                                                <div class="invalid-feedback">
+                                                    required leave-type
+                                                </div>
                                                 @enderror
                                             </div>
                                         </div>
@@ -90,21 +94,22 @@
                                             <label for="leave-from" class="input-label">Leave From</label>
                                             <div class="input-group has-validation">
                                                 <input type="text" class="form-control" id="nepali-leave-from"
-                                                    placeholder="Leave From*" required>
+                                                       placeholder="Leave From*" required>
                                                 @error('leave_from')
-                                                    <div class="invalid-feedback">
-                                                        required leave-from
-                                                    </div>
+                                                <div class="invalid-feedback">
+                                                    required leave-from
+                                                </div>
                                                 @enderror
                                             </div>
                                             <div class="input-group has-validation">
-                                                <input type="date" class="form-control" id="leave-from" name="leave_from"
-                                                    value="{{ old('leave_from', $item->leave_from) }}"
-                                                    placeholder="Leave From*" required readonly>
+                                                <input type="date" class="form-control" id="leave-from"
+                                                       name="leave_from"
+                                                       value="{{ old('leave_from', $item->leave_from) }}"
+                                                       placeholder="Leave From*" required readonly>
                                                 @error('leave_from')
-                                                    <div class="invalid-feedback">
-                                                        required leave-from
-                                                    </div>
+                                                <div class="invalid-feedback">
+                                                    required leave-from
+                                                </div>
                                                 @enderror
                                             </div>
                                         </div>
@@ -112,21 +117,22 @@
                                             <label for="leave-to" class="input-label">Leave To</label>
                                             <div class="input-group has-validation">
                                                 <input type="text" class="form-control" id="nepali-leave-to"
-                                                    placeholder="Leave To*" required>
+                                                       placeholder="Leave To*" required>
                                                 @error('leave_to')
-                                                    <div class="invalid-feedback">
-                                                        required leave-to
-                                                    </div>
+                                                <div class="invalid-feedback">
+                                                    required leave-to
+                                                </div>
                                                 @enderror
                                             </div>
                                             <div class="input-group has-validation">
                                                 <input type="date" class="form-control" id="leave-to" name="leave_to"
-                                                    value="{{ old('leave_to', $item->leave_to) }}" placeholder="Leave To*"
-                                                    required readonly>
+                                                       value="{{ old('leave_to', $item->leave_to) }}"
+                                                       placeholder="Leave To*"
+                                                       required readonly>
                                                 @error('leave_to')
-                                                    <div class="invalid-feedback">
-                                                        required leave-to
-                                                    </div>
+                                                <div class="invalid-feedback">
+                                                    required leave-to
+                                                </div>
                                                 @enderror
                                             </div>
                                         </div>
@@ -134,9 +140,11 @@
                                 </div>
                                 <div class="text-start">
                                     <button type="submit" class="btn"
-                                        style="background-color: #0b2982; color:white">Submit</button>
+                                            style="background-color: #0b2982; color:white">Submit
+                                    </button>
                                     <button type="reset" class="btn"
-                                        style="background-color: #b80000; color:white">Reset</button>
+                                            style="background-color: #b80000; color:white">Reset
+                                    </button>
                                 </div>
                             </form><!-- Vertical Form -->
 
@@ -151,16 +159,16 @@
 @endsection
 @section('footer')
     <script>
-        $(function() {
+        $(function () {
             $('.select2').select2();
-            $('.select-all').click(function() {
+            $('.select-all').click(function () {
                 let val = $(this).parent().siblings('select');
                 if (val) {
                     val.children().prop("selected", "selected");
                     val.trigger("change");
                 }
             })
-            $('.deselect-all').click(function() {
+            $('.deselect-all').click(function () {
                 let val = $(this).parent().siblings('select');
                 if (val) {
                     val.children().removeAttr("selected");
@@ -174,9 +182,8 @@
             dateFormat: '%y-%m-%d',
             closeOnDateSelect: true,
         });
-        $('#nepali-leave-from').on("dateChange", function(event) {
-
-            let formattedDate = event.datePickerData.adDate.toISOString().substr(0,10); // Format the date as YYYY-MM-DD
+        $('#nepali-leave-from').on("dateSelect", function (event) {
+            let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
 
             $('#leave-from').val(formattedDate)
         });
@@ -184,9 +191,9 @@
             dateFormat: '%y-%m-%d',
             closeOnDateSelect: true,
         });
-        $('#nepali-leave-to').on("dateChange", function(event) {
+        $('#nepali-leave-to').on("dateSelect", function (event) {
 
-            let formattedDate = event.datePickerData.adDate.toISOString().substr(0,10);  // Format the date as YYYY-MM-DD
+            let formattedDate = getDate(event.datePickerData.adDate);  // Format the date as YYYY-MM-DD
 
             $('#leave-to').val(formattedDate)
         });

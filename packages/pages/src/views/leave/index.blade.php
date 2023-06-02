@@ -259,7 +259,7 @@
         });
         $('#nepali-leave-from').on("dateChange", function(event) {
 
-            let formattedDate = event.datePickerData.adDate.toISOString().substr(0,10); // Format the date as YYYY-MM-DD
+            let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
 
             $('#leave-from').val(formattedDate)
         });
@@ -269,7 +269,7 @@
         });
         $('#nepali-leave-to').on("dateChange", function(event) {
 
-            let formattedDate = event.datePickerData.adDate.toISOString().substr(0,10);  // Format the date as YYYY-MM-DD
+            let formattedDate = getDate(event.datePickerData.adDate);  // Format the date as YYYY-MM-DD
 
             $('#leave-to').val(formattedDate)
         });
