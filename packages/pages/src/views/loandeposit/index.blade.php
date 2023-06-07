@@ -43,63 +43,65 @@
                                         <h5 class="input-title">Loan and Deposit List</h5>
                                     </div>
                                     <div class="container-fluid d-flex mb-3 p-0">
-                                                <!-- Button trigger modal -->
-                                                <button type="button" class="btn btn-primary d-flex align-items-center justify-content-between btn-fit-content" style="background-color: #0b2982; color:white"data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop">
-                                                    Import
-                                                </button>
+                                        <!-- Button trigger modal -->
+                                        <button type="button"
+                                            class="btn btn-primary d-flex align-items-center justify-content-between btn-fit-content"
+                                            style="background-color: #0b2982; color:white"data-bs-toggle="modal"
+                                            data-bs-target="#staticBackdrop">
+                                            Import
+                                        </button>
 
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                                    data-bs-keyboard="false" tabindex="-1"
-                                                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="staticBackdropLabel">Import Loan
-                                                                    Deposit
-                                                                </h5>
-                                                                <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <!-- Vertical Form -->
-                                                                <form class="row g-3 needs-validation" method="post"
-                                                                    action="{{ route('import-loandeposit') }}"
-                                                                    enctype="multipart/form-data" novalidate>
-                                                                    @csrf
-                                                                    <div class="container-fluid p-2 ">
-                                                                        <div class="col-12">
-                                                                            <label for="file"
-                                                                                class="input-label">File</label>
-                                                                            <div class="input-group has-validation">
-                                                                                <input type="file" class="form-control"
-                                                                                    id="file" name="file"
-                                                                                    placeholder="Loan Deposit Excel*"
-                                                                                    required>
-                                                                                @error('file')
-                                                                                    <div class="invalid-feedback">
-                                                                                        Required file title
-                                                                                    </div>
-                                                                                @enderror
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Import Loan
+                                                            Deposit
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <!-- Vertical Form -->
+                                                        <form class="row g-3 needs-validation" method="post"
+                                                            action="{{ route('import-loandeposit') }}"
+                                                            enctype="multipart/form-data" novalidate>
+                                                            @csrf
+                                                            <div class="container-fluid p-2 ">
+                                                                <div class="col-12">
+                                                                    <label for="file" class="input-label">File</label>
+                                                                    <div class="input-group has-validation">
+                                                                        <input type="file" class="form-control"
+                                                                            id="file" name="file"
+                                                                            placeholder="Loan Deposit Excel*" required>
+                                                                        @error('file')
+                                                                            <div class="invalid-feedback">
+                                                                                Required file title
                                                                             </div>
-                                                                        </div>
+                                                                        @enderror
                                                                     </div>
-
-                                                                    <div class="text-start">
-                                                                        <button type="submit" class="btn"
-                                                                            style="background-color: #0b2982; color:white">Import</button>
-                                                                    </div>
-                                                                </form><!-- Vertical Form -->
+                                                                </div>
                                                             </div>
-                                                        </div>
+
+                                                            <div class="text-start">
+                                                                <button type="submit" class="btn"
+                                                                    style="background-color: #0b2982; color:white">Import</button>
+                                                            </div>
+                                                        </form><!-- Vertical Form -->
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
 
-                                                <a style="background-color: #b80000; color:white" href="{{asset('LoanDeposit/sample_loan_deposits.xlsx')}}" class="btn btn-primary d-flex align-items-center justify-content-between btn-fit-content mx-2">
-                                                    <span>Sample</span>
-                                                    <i class="bi bi-download mx-2" style="color:white;font-size:14px;"></i>
-                                                </a>
+                                        <a style="background-color: #b80000; color:white"
+                                            href="{{ asset('LoanDeposit/sample_loan_deposits.xlsx') }}"
+                                            class="btn btn-primary d-flex align-items-center justify-content-between btn-fit-content mx-2">
+                                            <span>Sample</span>
+                                            <i class="bi bi-download mx-2" style="color:white;font-size:14px;"></i>
+                                        </a>
                                     </div>
                                     <!-- Default Table -->
                                     <table class="table text-nowrap table-striped" id="table" class="display nowrap"
@@ -130,12 +132,10 @@
                                                     <th scope="row">{{ $key + 1 }}</th>
                                                     <td>
                                                         @php
-                                                            if (isset($data->created_date)) {
-                                                                $date = \Carbon\Carbon::parse($data->created_date);
-                                                                $dc = new \Nilambar\NepaliDate\NepaliDate();
-                                                                $nd = $dc->convertAdToBs($date->year, $date->month, $date->day);
-                                                                echo $nd['year'] . '-' . $nd['month'] . '-' . $nd['day'];
-                                                            }
+                                                            $date = \Carbon\Carbon::parse($data->created_date);
+                                                            $dc = new \Nilambar\NepaliDate\NepaliDate();
+                                                            $nd = $dc->convertAdToBs($date->year, $date->month, $date->day);
+                                                            echo $nd['year'] . '-' . $nd['month'] . '-' . $nd['day'];
                                                         @endphp
                                                     </td>
                                                     <td>{{ $data->branch?->title }}</td>
