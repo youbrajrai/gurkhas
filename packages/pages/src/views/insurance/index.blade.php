@@ -225,8 +225,18 @@
                                                     <label for="insurance_start_date" class="input-label">Issued
                                                         On</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="text" class="form-control date-picker"
-                                                            name="insurance_start_date" id="insurance_start_date"
+                                                        <input type="text" class="form-control"
+                                                            name="insurance_start_date" id="nepali-start-date"
+                                                            placeholder="Insurance Start date*" required>
+                                                        @error('insurance_start_date')
+                                                            <div class="invalid-feedback d-block">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="input-group has-validation">
+                                                        <input type="text" class="form-control"
+                                                            name="insurance_start_date" id="start-date"
                                                             placeholder="Insurance Start date*" required>
                                                         @error('insurance_start_date')
                                                             <div class="invalid-feedback d-block">
@@ -239,7 +249,7 @@
                                                     <label for="insurance_expiry_date" class="input-label">Expires
                                                         On</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="text" class="form-control date-picker"
+                                                        <input type="text" class="form-control"
                                                             name="insurance_expiry_date" id="insurance_expiry_date"
                                                             placeholder="Insurance Expiry date*" required>
                                                         @error('insurance_expiry_date')
@@ -268,4 +278,28 @@
             </div>
         </section>
     </main><!-- End #main -->
+@endsection
+@section('footer')
+<script>
+    $('#nepali-start-date').nepaliDatePicker({
+        dateFormat: '%y-%m-%d',
+        closeOnDateSelect: true,
+    });
+    $('#nepali-start-date').on("dateChange", function(event) {
+
+        let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
+
+        $('#start-date').val(formattedDate)
+    });
+    $('#nepali-end-date').nepaliDatePicker({
+        dateFormat: '%y-%m-%d',
+        closeOnDateSelect: true,
+    });
+    $('#nepali-end-date').on("dateChange", function(event) {
+
+        let formattedDate = getDate(event.datePickerData.adDate);  // Format the date as YYYY-MM-DD
+
+        $('#end-date').val(formattedDate)
+    });
+</script>
 @endsection

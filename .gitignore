@@ -1,6 +1,5 @@
 node_modules
 storage
-public
 .vscode
 .idea
 .gitlab-ci.yml
