@@ -94,7 +94,8 @@
                                         <div class="col-4">
                                             <label for="insurance_amount" class="input-label">Insurance Amount</label>
                                             <div class="input-group has-validation">
-                                                <input type="number" min="1" step="0.01" class="form-control" name="insurance_amount"
+                                                <input type="number" min="1" step="0.01" class="form-control"
+                                                    name="insurance_amount"
                                                     value="{{ old('insurance_amount', $item->insurance_amount) }}"
                                                     id="insurance_amount" placeholder="Insurance Amount*" required>
                                                 @error('insurance_amount')
@@ -125,10 +126,18 @@
                                         <div class="col-3">
                                             <label for="insurance_start_date" class="input-label">Issued On</label>
                                             <div class="input-group has-validation">
-                                                <input type="text" class="form-control date-picker"
-                                                    name="insurance_start_date"
+                                                <input type="text" class="form-control" id="nepali-start-date"
+                                                    placeholder="Insurance Start date*" required>
+                                                @error('insurance_start_date')
+                                                    <div class="invalid-feedback d-block">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <div class="input-group has-validation">
+                                                <input type="date" class="form-control" name="insurance_start_date"
                                                     value="{{ old('insurance_start_date', $item->insurance_start_date) }}"
-                                                    id="insurance_start_date" placeholder="Insurance Start date*" required>
+                                                    id="start-date" placeholder="Insurance Start date*" required readonly>
                                                 @error('insurance_start_date')
                                                     <div class="invalid-feedback d-block">
                                                         {{ $message }}
@@ -139,16 +148,18 @@
                                         <div class="col-3">
                                             <label for="insurance_expiry_date" class="input-label">Expires On</label>
                                             <div class="input-group has-validation">
-                                                <input type="text" class="form-control date-picker"
-                                                    name="insurance_expiry_date"
+                                                <input type="text" class="form-control" id="nepali-end-date"
+                                                    placeholder="Insurance Expiry date*" required>
+                                            </div>
+                                            <div class="input-group has-validation">
+                                                <input type="date" class="form-control" name="insurance_expiry_date"
                                                     value="{{ old('insurance_expiry_date', $item->insurance_expiry_date) }}"
-                                                    id="insurance_expiry_date" placeholder="Insurance Start date*" required>
+                                                    id="end-date" placeholder="Insurance Start date*" required readonly>
                                                 @error('insurance_expiry_date')
                                                     <div class="invalid-feedback d-block">
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
-
                                             </div>
                                         </div>
                                     </div>
@@ -188,6 +199,28 @@
                     val.trigger("change");
                 }
             })
+        });
+    </script>
+    <script>
+        $('#nepali-start-date').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#nepali-start-date').on("dateChange", function(event) {
+
+            let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
+
+            $('#start-date').val(formattedDate)
+        });
+        $('#nepali-end-date').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#nepali-end-date').on("dateChange", function(event) {
+
+            let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
+
+            $('#end-date').val(formattedDate)
         });
     </script>
 @endsection

@@ -46,6 +46,8 @@ Route::middleware(['web', 'auth'])
         Route::resource('fixedinterest', FixedInterestController::class);
         Route::resource('standardterrif', StandardTerrifController::class);
         Route::resource('loandeposit', LoanDepositController::class);
+        //to import loan deposit
+        Route::post('import-loandeposit', [LoanDepositController::class, 'importLoanDeposit'])->name('import-loandeposit');
         //to find document sub-type by its type
         Route::get('/findSubDocument', [DocumentController::class, 'findSubDocument'])->name('findSubDocument');
         Route::get('/findSubCommitteeLevel', [CommitteeController::class, 'findSubCommitteeLevel'])->name('findSubCommitteeLevel');

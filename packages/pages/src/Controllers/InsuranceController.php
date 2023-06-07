@@ -14,7 +14,7 @@ class InsuranceController extends CrudController
         $validation_rule[0] =[
             'name' => ['required'],
             'insurance_start_date' => ['required'],
-            'insurance_expiry_date' => ['required'],
+            'insurance_expiry_date' => ['required','after:insurance_start_date'],
             'insurance_company' => ['required','string','max:255'],
             'insurance_amount' => ['required'],
             'branch_id' => ['required'],
@@ -24,7 +24,7 @@ class InsuranceController extends CrudController
         $validation_rule[1] =[
             'name' => ['required'],
             'insurance_start_date' => ['required'],
-            'insurance_expiry_date' => ['required'],
+            'insurance_expiry_date' => ['required','after:insurance_start_date'],
             'insurance_company' => ['required','string','max:255'],
             'insurance_amount' => ['required'],
             'branch_id' => ['required'],

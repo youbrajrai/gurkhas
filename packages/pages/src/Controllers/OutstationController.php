@@ -16,7 +16,7 @@ class OutstationController extends CrudController
             'user_id' => ['required', new UniqueUserIdWithinTimeFrame($request->outtime, $request->estimated_return_time)],
             'travel_place' => ['required', 'string', 'max:255'],
             'outtime' => ['required'],
-            'estimated_return_time' => ['required'],
+            'estimated_return_time' => ['required','after:outtime'],
             'actual_return_time' => ['nullable'],
             'remarks' => ['nullable', 'string', 'max:255']
 
@@ -25,7 +25,7 @@ class OutstationController extends CrudController
             'user_id' => ['required', new UniqueUserIdWithinTimeFrame($request->outtime, $request->estimated_return_time, $request->route("outstation"))],
             'travel_place' => ['required', 'string', 'max:255'],
             'outtime' => ['required'],
-            'estimated_return_time' => ['required'],
+            'estimated_return_time' => ['required','after:outtime'],
             'actual_return_time' => ['nullable'],
             'remarks' => ['nullable', 'string', 'max:255']
 

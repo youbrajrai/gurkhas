@@ -61,8 +61,23 @@
                                                 <tr>
                                                     <th scope="row">{{ $key + 1 }}</th>
                                                     <td>{{ $data->name }}</td>
-                                                    <td>{{ $data->agreement_date }}</td>
-                                                    <td>{{ $data->expiry_date }}</td>
+                                                    <td>
+                                                        @php
+                                                            $date = \Carbon\Carbon::parse($data->agreement_date);
+                                                            $dc = new \Nilambar\NepaliDate\NepaliDate();
+                                                            $nd = $dc->convertAdToBs($date->year, $date->month, $date->day);
+                                                            echo $nd['year'] . '-' . $nd['month'] . '-' . $nd['day'];
+                                                        @endphp
+                                                    </td>
+                                                    <td>
+                                                        @php
+                                                            $date = \Carbon\Carbon::parse($data->expiry_date);
+                                                            $dc = new \Nilambar\NepaliDate\NepaliDate();
+                                                            $nd = $dc->convertAdToBs($date->year, $date->month, $date->day);
+                                                            echo $nd['year'] . '-' . $nd['month'] . '-' . $nd['day'];
+                                                        @endphp
+
+                                                    </td>
                                                     <td>{!! $data->remarks !!}</td>
                                                     <td>
                                                         <div class="container-fluid d-flex">
@@ -123,22 +138,36 @@
                                                 <div class="col-4">
                                                     <label for="agreement_date" class="input-label">Agreement Date</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="text" class="form-control date-picker"
-                                                            id="agreement_date" name="agreement_date"
-                                                            placeholder="Agreement Date*" required>
+                                                        <input type="text" class="form-control"
+                                                            id="nepali_agreement_date" placeholder="Agreement Date*"
+                                                            required>
                                                         @error('agreement_date')
                                                             <div class="invalid-feedback">
                                                                 required agreement_date
                                                             </div>
                                                         @enderror
+                                                        <div class="input-group has-validation">
+                                                            <input type="date" class="form-control"
+                                                                id="agreement_date" name="agreement_date"
+                                                                placeholder="Agreement Date*" required readonly>
+                                                            @error('agreement_date')
+                                                                <div class="invalid-feedback">
+                                                                    required agreement_date
+                                                                </div>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
                                                     <label for="expiry_date" class="input-label">Expiry Date</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="text" class="form-control date-picker"
-                                                            id="expiry_date" name="expiry_date"
-                                                            placeholder="Expiry Date*" required>
+                                                        <input type="text" class="form-control"
+                                                            id="nepali_expiry_date" placeholder="Expiry Date*" required>
+                                                    </div>
+                                                    <div class="input-group has-validation">
+                                                        <input type="date" class="form-control" id="expiry_date"
+                                                            name="expiry_date" placeholder="Expiry Date*" required
+                                                            readonly>
                                                         @error('expiry_date')
                                                             <div class="invalid-feedback">
                                                                 Required expiry_date
@@ -180,4 +209,28 @@
             </div>
         </section>
     </main><!-- End #main -->
+@endsection
+@section('footer')
+    <script>
+        $('#nepali_agreement_date').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#nepali_agreement_date').on("dateChange", function(event) {
+
+            let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
+
+            $('#agreement_date').val(formattedDate)
+        });
+        $('#nepali_expiry_date').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#nepali_expiry_date').on("dateChange", function(event) {
+
+            let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
+
+            $('#expiry_date').val(formattedDate)
+        });
+    </script>
 @endsection

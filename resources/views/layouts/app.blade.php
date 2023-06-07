@@ -33,7 +33,35 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 py-3 d-flex justify-content-end align-items-end"
                     style="background-color: white;">
+                    <div class="col-3 col-md-4">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#linksModal">
+                            Links
+                        </button>
 
+                        <!-- Modal -->
+                        <div class="modal fade" id="linksModal" tabindex="-1" aria-labelledby="linksModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="linksModalLabel">Company Links</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Here will be links
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class=" col-sm-3 col-md-4  d-flex justify-content-end px-3 col-lg-4 col-12 ">
                         @auth
                             <a class="btn btn-md col-10 text-light fw-bold"
@@ -142,7 +170,8 @@
                         </li> --}}
                         <li class="nav-item dropdown">
                             <a class="nav-link   {{ Route::currentRouteName() == 'documents' ? 'active' : '' }} dropdown-toggle"
-                                type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 Documents
                             </a>
                             <ul class="dropdown-menu committee-drop" aria-labelledby="dropdownMenuButton">

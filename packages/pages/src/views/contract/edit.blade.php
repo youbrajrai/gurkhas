@@ -51,10 +51,19 @@
                                         <div class="col-4">
                                             <label for="agreement_date" class="input-label">Agreement Date</label>
                                             <div class="input-group has-validation">
-                                                <input type="text" class="form-control date-picker" id="agreement_date"
+                                                <input type="text" class="form-control" id="nepali_agreement_date"
+                                                    placeholder="Agreement Date*" required>
+                                                @error('agreement_date')
+                                                    <div class="invalid-feedback">
+                                                        required agreement_date
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <div class="input-group has-validation">
+                                                <input type="date" class="form-control" id="agreement_date"
                                                     name="agreement_date"
                                                     value="{{ old('agreement_date', $item->agreement_date) }}"placeholder="Agreement Date*"
-                                                    required>
+                                                    required readonly>
                                                 @error('agreement_date')
                                                     <div class="invalid-feedback">
                                                         required agreement_date
@@ -65,15 +74,21 @@
                                         <div class="col-4">
                                             <label for="expiry_date" class="input-label">Expiry Date</label>
                                             <div class="input-group has-validation">
-                                                <input type="text" class="form-control date-picker" id="expiry_date"
-                                                    name="expiry_date" value="{{ old('expiry_date', $item->expiry_date) }}"
+                                                <input type="text" class="form-control" id="nepali_expiry_date"
                                                     placeholder="Expiry Date*" required>
+
+                                            </div>
+                                            <div class="input-group has-validation">
+                                                <input type="date" class="form-control" id="expiry_date"
+                                                    name="expiry_date" value="{{ old('expiry_date', $item->expiry_date) }}"
+                                                    placeholder="Expiry Date*" required readonly>
                                                 @error('expiry_date')
                                                     <div class="invalid-feedback">
                                                         required expiry_date
                                                     </div>
                                                 @enderror
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -113,5 +128,27 @@
 @section('footer')
     <script>
         CKEDITOR.replace('remarks');
+    </script>
+    <script>
+        $('#nepali_agreement_date').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#nepali_agreement_date').on("dateChange", function(event) {
+
+            let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
+
+            $('#agreement_date').val(formattedDate)
+        });
+        $('#nepali_expiry_date').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#nepali_expiry_date').on("dateChange", function(event) {
+
+            let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
+
+            $('#expiry_date').val(formattedDate)
+        });
     </script>
 @endsection

@@ -15,14 +15,14 @@ class LeaveController extends CrudController
         $validation_rule[0] = [
             'user_id' => ['required', new UniqueUserIdWithinDate($request->leave_from, $request->leave_to)],
             'leave_from' => ['required'],
-            'leave_to' => ['required'],
+            'leave_to' => ['required','after:leave_from'],
             'leave_type' => ['required']
 
         ];
         $validation_rule[1] = [
             'user_id' => ['required', new UniqueUserIdWithinDate($request->leave_from, $request->leave_to, $request->route("leave"))],
             'leave_from' => ['required'],
-            'leave_to' => ['required'],
+            'leave_to' => ['required','after:leave_from'],
             'leave_type' => ['required']
 
         ];

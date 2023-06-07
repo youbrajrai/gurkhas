@@ -19,7 +19,7 @@ class VendorController extends CrudController
             'contact_person' => ['required'],
             'contact_details' => ['required'],
             'contract_start_date' => ['required'],
-            'contract_expiry_date' => ['required'],
+            'contract_expiry_date' => ['required','after:contract_start_date'],
             'file' => ['required','mimes:pdf']
 
         ];
@@ -31,7 +31,7 @@ class VendorController extends CrudController
             'contact_person' => ['required'],
             'contact_details' => ['required'],
             'contract_start_date' => ['required'],
-            'contract_expiry_date' => ['required'],
+            'contract_expiry_date' => ['required','after:contract_start_date'],
             'file' => ['mimes:pdf']
 
         ];

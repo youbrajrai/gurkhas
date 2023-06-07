@@ -80,8 +80,22 @@
                                                         <td>{{ $data?->name }}</td>
                                                         <td>{{ $data?->insurance_amount }}</td>
                                                         <td>{{ $data?->insurance_company }}</td>
-                                                        <td>{{ $data?->insurance_start_date }}</td>
-                                                        <td>{{ $data?->insurance_expiry_date }}</td>
+                                                        <td>
+                                                            @php
+                                                                $date = \Carbon\Carbon::parse($data->insurance_start_date);
+                                                                $dc = new \Nilambar\NepaliDate\NepaliDate();
+                                                                $nd = $dc->convertAdToBs($date->year, $date->month, $date->day);
+                                                                echo $nd['year'] . '-' . $nd['month'] . '-' . $nd['day'];
+                                                            @endphp
+                                                        </td>
+                                                        <td>
+                                                            @php
+                                                                $date = \Carbon\Carbon::parse($data->insurance_expiry_date);
+                                                                $dc = new \Nilambar\NepaliDate\NepaliDate();
+                                                                $nd = $dc->convertAdToBs($date->year, $date->month, $date->day);
+                                                                echo $nd['year'] . '-' . $nd['month'] . '-' . $nd['day'];
+                                                            @endphp
+                                                        </td>
                                                         <td><a target="_blank"
                                                                 href="{{ url(basename(storage_path()) . '/' . $data?->media?->file_path) }}"><i
                                                                     class="bi bi-file-earmark-break-fill px-5"></i></a></td>
@@ -192,9 +206,10 @@
                                                     <label for="insurance_amount" class="input-label">Insurance
                                                         Amount</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="number" min="1" step="0.01" class="form-control"
-                                                            name="insurance_amount" id="insurance_amount"
-                                                            placeholder="Insurance Amount*" required>
+                                                        <input type="number" min="1" step="0.01"
+                                                            class="form-control" name="insurance_amount"
+                                                            id="insurance_amount" placeholder="Insurance Amount*"
+                                                            required>
                                                         @error('insurance_amount')
                                                             <div class="invalid-feedback d-block">
                                                                 required insurance_amount
@@ -225,8 +240,7 @@
                                                     <label for="insurance_start_date" class="input-label">Issued
                                                         On</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="text" class="form-control"
-                                                            name="insurance_start_date" id="nepali-start-date"
+                                                        <input type="text" class="form-control" id="nepali-start-date"
                                                             placeholder="Insurance Start date*" required>
                                                         @error('insurance_start_date')
                                                             <div class="invalid-feedback d-block">
@@ -235,9 +249,9 @@
                                                         @enderror
                                                     </div>
                                                     <div class="input-group has-validation">
-                                                        <input type="text" class="form-control"
+                                                        <input type="date" class="form-control"
                                                             name="insurance_start_date" id="start-date"
-                                                            placeholder="Insurance Start date*" required>
+                                                            placeholder="Insurance Start date*" required readonly>
                                                         @error('insurance_start_date')
                                                             <div class="invalid-feedback d-block">
                                                                 {{ $message }}
@@ -249,9 +263,18 @@
                                                     <label for="insurance_expiry_date" class="input-label">Expires
                                                         On</label>
                                                     <div class="input-group has-validation">
-                                                        <input type="text" class="form-control"
-                                                            name="insurance_expiry_date" id="insurance_expiry_date"
+                                                        <input type="text" class="form-control" id="nepali-end-date"
                                                             placeholder="Insurance Expiry date*" required>
+                                                        @error('insurance_expiry_date')
+                                                            <div class="invalid-feedback d-block">
+                                                                required insurance_expiry_date
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="input-group has-validation">
+                                                        <input type="date" class="form-control"
+                                                            name="insurance_expiry_date" id="end-date"
+                                                            placeholder="Insurance Expiry date*" required readonly>
                                                         @error('insurance_expiry_date')
                                                             <div class="invalid-feedback d-block">
                                                                 required insurance_expiry_date
@@ -280,26 +303,26 @@
     </main><!-- End #main -->
 @endsection
 @section('footer')
-<script>
-    $('#nepali-start-date').nepaliDatePicker({
-        dateFormat: '%y-%m-%d',
-        closeOnDateSelect: true,
-    });
-    $('#nepali-start-date').on("dateChange", function(event) {
+    <script>
+        $('#nepali-start-date').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#nepali-start-date').on("dateChange", function(event) {
 
-        let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
+            let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
 
-        $('#start-date').val(formattedDate)
-    });
-    $('#nepali-end-date').nepaliDatePicker({
-        dateFormat: '%y-%m-%d',
-        closeOnDateSelect: true,
-    });
-    $('#nepali-end-date').on("dateChange", function(event) {
+            $('#start-date').val(formattedDate)
+        });
+        $('#nepali-end-date').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#nepali-end-date').on("dateChange", function(event) {
 
-        let formattedDate = getDate(event.datePickerData.adDate);  // Format the date as YYYY-MM-DD
+            let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
 
-        $('#end-date').val(formattedDate)
-    });
-</script>
+            $('#end-date').val(formattedDate)
+        });
+    </script>
 @endsection

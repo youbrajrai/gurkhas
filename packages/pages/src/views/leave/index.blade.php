@@ -187,21 +187,21 @@
                                                     <label for="leave-from" class="input-label">Leave From</label>
                                                     <div class="input-group has-validation">
                                                         <input type="text" class="form-control" id="nepali-leave-from"
-                                                               placeholder="Leave From*" required>
+                                                            placeholder="Leave From*" required>
                                                         @error('leave_from')
-                                                        <div class="invalid-feedback">
-                                                            required leave-from
-                                                        </div>
+                                                            <div class="invalid-feedback">
+                                                                required leave-from
+                                                            </div>
                                                         @enderror
                                                     </div>
                                                     <div class="input-group has-validation">
-                                                        <input type="date" class="form-control" id="leave-from" name="leave_from"
-                                                               value="{{ old('leave_from') }}"
-                                                               placeholder="Leave From*" required readonly>
+                                                        <input type="date" class="form-control" id="leave-from"
+                                                            name="leave_from" value="{{ old('leave_from') }}"
+                                                            placeholder="Leave From*" required readonly>
                                                         @error('leave_from')
-                                                        <div class="invalid-feedback">
-                                                            required leave-from
-                                                        </div>
+                                                            <div class="invalid-feedback">
+                                                                required leave-from
+                                                            </div>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -209,21 +209,21 @@
                                                     <label for="leave-to" class="input-label">Leave To</label>
                                                     <div class="input-group has-validation">
                                                         <input type="text" class="form-control" id="nepali-leave-to"
-                                                               placeholder="Leave To*" required>
+                                                            placeholder="Leave To*" required>
                                                         @error('leave_to')
-                                                        <div class="invalid-feedback">
-                                                            required leave-to
-                                                        </div>
+                                                            <div class="invalid-feedback">
+                                                                required leave-to
+                                                            </div>
                                                         @enderror
                                                     </div>
                                                     <div class="input-group has-validation">
-                                                        <input type="date" class="form-control" id="leave-to" name="leave_to"
-                                                               value="{{ old('leave_to') }}" placeholder="Leave To*"
-                                                               required readonly>
+                                                        <input type="date" class="form-control" id="leave-to"
+                                                            name="leave_to" value="{{ old('leave_to') }}"
+                                                            placeholder="Leave To*" required readonly>
                                                         @error('leave_to')
-                                                        <div class="invalid-feedback">
-                                                            required leave-to
-                                                        </div>
+                                                            <div class="invalid-feedback">
+                                                                required leave-to
+                                                            </div>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -269,7 +269,7 @@
         });
         $('#nepali-leave-to').on("dateChange", function(event) {
 
-            let formattedDate = getDate(event.datePickerData.adDate);  // Format the date as YYYY-MM-DD
+            let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
 
             $('#leave-to').val(formattedDate)
         });
