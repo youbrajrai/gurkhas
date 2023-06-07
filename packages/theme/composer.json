@@ -1,0 +1,11 @@
+{
+    "name": "youbraj/theme",
+    "description": "A theme package for Laravel PHP Framework to Features for Front Pages",
+    "type": "library",
+    "authors": [
+      {
+        "name": "Youbraj Rai",
+        "email": "youbrajrai79@gmail.com"
+      }
+    ]
+}
