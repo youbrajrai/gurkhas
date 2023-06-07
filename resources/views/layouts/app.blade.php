@@ -33,10 +33,10 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 py-3 d-flex justify-content-end align-items-end"
                     style="background-color: white;">
-                    <div class="col-3 col-md-4">
+                    <div class="col-3 col-md-4 d-flex justify-content-end">
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#linksModal">
+                            data-bs-target="#linksModal" style="background-color: #d84926; box-shadow:1px 1px 2px #000000 ;">
                             Links
                         </button>
 

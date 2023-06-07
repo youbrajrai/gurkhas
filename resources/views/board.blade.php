@@ -25,7 +25,7 @@
                                     <h5 class="pt-2">{{ $chairman?->user?->name }}</h5>
                                     <span class="h8">{{ $chairman?->user?->employeeDetails?->position?->title }}</span>
                                 </div>
-                                <span class="profile-body p-2">Since: {{ $chairman?->user->joined_date }}</span>
+                                <span class="profile-body p-2">{{ $chairman?->user->email }}</span>
                             </div>
 
                         </div>
@@ -46,7 +46,7 @@
                                     <h5 class="pt-2" style="text-align:center">{{ $data->user->name }}</h5>
                                     <span class="h8">{{ $data->user?->employeeDetails?->position->title }}</span>
                                 </div>
-                                <span class="profile-body p-2">Since: {{ $data->user->joined_date }}</span>
+                                <span class="profile-body p-2" style="font-size:12px">{{ $data->user->email }}</span>
                             </div>
 
                         </div>
