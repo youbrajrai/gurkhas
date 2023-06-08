@@ -30,22 +30,24 @@
                 @endphp
                 <div class="row d-flex justify-content-center m-0 p-3">
                     @foreach ($sub_committees as $data)
-                        <div class="col-12 col-md-4 col-lg-3">
-                            <div class="card profile-card d-flex justify-content-center align-items-center"
-                                style="min-height:375px ;height: 100%;">
-                                <div class="card d-flex justify-content-center  align-items-center  bg-light p-2"
-                                    style="width: 90%; margin-top: 120px;"><img class="leave-profile"
-                                        src="{{ asset(basename(storage_path()) . '/' . $data->user->media?->file_path) }}"
-                                        class="rounded float-left" alt="Avatar"
-                                        style="border-radius: 50%; margin-top: -100px;object-fit:cover;width:200px;height:188px">
-                                    <h5 class="pt-2">{{ $data->user->name }}</h5>
-                                    <span class="h8">{{ $data->position }}</span>
+                        @if ($data->user->employeeDetails->status == 1)
+                            <div class="col-12 col-md-4 col-lg-3">
+                                <div class="card profile-card d-flex justify-content-center align-items-center"
+                                    style="min-height:375px ;height: 100%;">
+                                    <div class="card d-flex justify-content-center  align-items-center  bg-light p-2"
+                                        style="width: 90%; margin-top: 120px;"><img class="leave-profile"
+                                            src="{{ asset(basename(storage_path()) . '/' . $data->user->media?->file_path) }}"
+                                            class="rounded float-left" alt="Avatar"
+                                            style="border-radius: 50%; margin-top: -100px;object-fit:cover;width:200px;height:188px">
+                                        <h5 class="pt-2">{{ $data->user->name }}</h5>
+                                        <span class="h8">{{ $data->position }}</span>
+                                    </div>
+                                    <span class="profile-body"style="font-size: 12px;">{{ $data->user->email }}</span>
+                                    <span class="profile-body">{{ $data?->mobile_no }}</span>
                                 </div>
-                                <span class="profile-body"style="font-size: 12px;">{{ $data->user->email }}</span>
-                                <span class="profile-body">{{ $data?->mobile_no }}</span>
-                            </div>
 
-                        </div>
+                            </div>
+                        @endif
                     @endforeach
 
                 </div>

@@ -57,26 +57,38 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="container-fluid d-flex justify-content-center my-2">
-                                            <a href="https://www.gurkhasfinance.com.np/" target=”_blank”><button
-                                                    type="button" class="btn btn-lg"
-                                                    style="background-color: #13017c; border:2px solid #ff3b3b; color:#ffffff"><img
-                                                        src="images/logo.png" alt=""
-                                                        style="max-height:60px; max-width:60px; padding-right:20px;">
-                                                    Gurkha Finance Main
-                                                    page</button></a>
+                                        <div
+                                            class="container-fluid d-flex justify-content-center align-items-center my-2">
+                                            <a class="col-12 btn pt-2"
+                                                style="background-color: #13017c; border:2px solid #ff3b3b; color:#ffffff;"
+                                                href="http://192.168.12.14/taml-gurkhas/" target=”_blank”>
+                                                AML CFT
+                                            </a>
                                         </div>
-                                        <div class="container-fluid d-flex justify-content-center my-2">
-                                            <a href="https://www.gurkhasfinance.com.np/" target=”_blank”><button
-                                                    type="button" class="btn btn-lg"
-                                                    style="background-color: #13017c; border:2px solid #ff3b3b; color:#ffffff"><img
-                                                        src="images/logo.png" alt=""
-                                                        style="max-height:60px; max-width:60px; padding-right:20px;">
-                                                    Gurkha Finance Main
-                                                    page</button></a>
+                                        <div
+                                            class="container-fluid d-flex justify-content-center align-items-center my-2">
+                                            <a class="col-12 btn pt-2"
+                                                style="background-color: #13017c; border:2px solid #ff3b3b; color:#ffffff;"
+                                                href="http://192.168.12.28:8082/Security" target=”_blank”>
+                                                HRMS
+                                            </a>
                                         </div>
+                                        <div
+                                            class="container-fluid d-flex justify-content-center align-items-center my-2">
+                                            <a class="col-12 btn pt-2"
+                                                style="background-color: #13017c; border:2px solid #ff3b3b; color:#ffffff;"
+                                                href="http://192.168.12.29:8070" target=”_blank”>
 
-
+                                                Operation Memo</a>
+                                        </div>
+                                        <div
+                                            class="container-fluid d-flex justify-content-center align-items-center my-2">
+                                            <a class="col-12 btn pt-2"
+                                                style="background-color: #13017c; border:2px solid #ff3b3b; color:#ffffff;"
+                                                href="http://192.168.12.29" target=”_blank”>
+                                                Credit Appraisal
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

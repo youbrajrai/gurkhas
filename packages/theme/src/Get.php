@@ -40,7 +40,7 @@ class Get
     public static function getTotalLeaves()
     {
 
-        $currentDateTime = \Carbon\Carbon::now()->startOfDay();
+        $currentDateTime = Carbon::now()->startOfDay();
         if (Auth::user()->isAdmin) {
             $totalLeaves = Leave::distinct("user_id")->whereDate('leave_from', '<=', $currentDateTime)
                 ->whereDate('leave_to', '>=', $currentDateTime)
@@ -86,7 +86,7 @@ class Get
     public static function ratesFilter($filterBY)
     {
         $current_date = toNepaliDate(now()->format('Y-m-d'));
-        $date = \Carbon\Carbon::parse($current_date);
+        $date = Carbon::parse($current_date);
         $year = $date->year;
         $month = $date->month;
         $day = $date->day;
@@ -142,17 +142,19 @@ class Get
         // Post::doesntHave('comments')->get();
         $users = User::doesntHave("boards");
         if ($province != null) {
-            $users->whereHas('employeeDetails.branch', function ($query) use ($province) {
-                $query->where('province', $province);
+            $users->whereHas('employeeDetails', function ($query) use ($province) {
+                $query->where('status', '1')
+                    ->whereHas('branch', function ($query) use ($province) {
+                        $query->where('province', $province);
+                    });
             });
         }
-        ;
         if ($branchId > 0) {
             $users->whereHas('employeeDetails', function ($query) use ($branchId) {
                 $query->where('branch_id', $branchId);
             });
         }
-        ;
+
         return $users->get();
     }
     public static function branchFilter($province = null)
@@ -175,7 +177,7 @@ class Get
     public static function getBoards()
     {
         $boards = Board::whereHas('user.employeeDetails', function ($query) {
-            $query->whereHas('position', function ($query) {
+            $query->where('status', '1')->whereHas('position', function ($query) {
                 $query->where('title', '<>', 'Chairman');
             })->orderBy('order');
         })->get();
@@ -252,8 +254,11 @@ class Get
             $query->where('id', $sub_committee_level_id);
         });
         if ($department != null) {
-            $committees->whereHas('user.employeeDetails.department', function ($query) use ($department) {
-                $query->where('id', $department);
+            $committees->whereHas('user.employeeDetails', function ($query) use ($department) {
+                $query->where('status', '1')
+                    ->whereHas('department', function ($query) use ($department) {
+                        $query->where('id', $department);
+                    });
             });
         }
         return $committees->get();
