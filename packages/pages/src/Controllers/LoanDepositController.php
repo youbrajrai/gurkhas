@@ -43,7 +43,12 @@ class LoanDepositController extends CrudController
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
             }
-            Excel::import(new LoanDepositImport, $request->file('file'));
+            try {
+                Excel::import(new LoanDepositImport, $request->file('file'));
+            } catch (\Throwable $th) {
+                //throw $th;
+                return back()->withErrors('Import Error! Please Follow the Guidelines.');
+            }
         }
         return redirect()->route('loandeposit.index');
     }
