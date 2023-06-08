@@ -35,28 +35,48 @@
                     style="background-color: white;">
                     <div class="col-3 col-md-4 d-flex justify-content-end">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#linksModal" style="background-color: #d84926; box-shadow:1px 1px 2px #000000 ;">
+                        {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#linksModal"
+                            style="background-color: #d84926; box-shadow:1px 1px 1px #000000 ;">
                             Links
-                        </button>
+                        </button> --}}
+                        <a class="btn btn-md col-10 text-light fw-bold" data-bs-toggle="modal"
+                            data-bs-target="#linksModal"
+                            style="background-color: #d84926; box-shadow:1px 1px 2px #000000 ;">
+                            Links
+                        </a>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="linksModal" tabindex="-1" aria-labelledby="linksModalLabel"
+                        <div class="modal fade" id="linksModal" tabindex="-1" aria-labelledby="generalLinksLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="linksModalLabel">Company Links</h1>
+                                        <h1 class="modal-title fs-5" id="generalLinksLabel">General Links</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        Here will be links
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <div class="container-fluid d-flex justify-content-center my-2">
+                                            <a href="https://www.gurkhasfinance.com.np/" target=”_blank”><button
+                                                    type="button" class="btn btn-lg"
+                                                    style="background-color: #13017c; border:2px solid #ff3b3b; color:#ffffff"><img
+                                                        src="images/logo.png" alt=""
+                                                        style="max-height:60px; max-width:60px; padding-right:20px;">
+                                                    Gurkha Finance Main
+                                                    page</button></a>
+                                        </div>
+                                        <div class="container-fluid d-flex justify-content-center my-2">
+                                            <a href="https://www.gurkhasfinance.com.np/" target=”_blank”><button
+                                                    type="button" class="btn btn-lg"
+                                                    style="background-color: #13017c; border:2px solid #ff3b3b; color:#ffffff"><img
+                                                        src="images/logo.png" alt=""
+                                                        style="max-height:60px; max-width:60px; padding-right:20px;">
+                                                    Gurkha Finance Main
+                                                    page</button></a>
+                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>
