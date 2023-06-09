@@ -271,7 +271,7 @@ class Get
 
     public static function cash_in_cash_out()
     {
-        $branches = Branch::get()->chunk(3);
+        $branches = Branch::get()->chunk(5);
         $data = [];
         foreach ($branches as $k => $branch) {
             $data[$k] = [
@@ -279,7 +279,12 @@ class Get
                 "loan_issued" => [],
                 "deposit" => [],
             ];
+            $pattern = '/^([^\s-]+)/';
+
             foreach ($branch as $val) {
+                if (preg_match($pattern, $val->title, $matches)) {
+                    $val->title = $matches[1];
+                }
                 $fd = $val->loanDeposite()->orderBY("created_date", "DESC")->first();
                 $data[$k]["branch_name"][] = $val->title;
                 $data[$k]['loan_issued'][] = $fd?->loan_issued ?? 0;

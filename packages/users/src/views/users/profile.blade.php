@@ -91,7 +91,7 @@
                                                     <input type="text" class="form-control" id="contact_no"
                                                         name="contact_no"
                                                         value="{{ old('contact_no', Auth::user()->contact_no) }}"
-                                                        placeholder="Contact Number*" required>
+                                                        placeholder="Contact Number*">
                                                 </div>
                                             </div>
                                         </div>

@@ -25,7 +25,7 @@ class ProfileController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'file' => ['mimes:jpeg,jpg,png'],
-            'contact_no' => ['required'],
+            'contact_no' => ['nullable'],
             'mobile_no' => ['required'],
             'password' => ['nullable', 'confirmed', 'min:6'],
         ]);
