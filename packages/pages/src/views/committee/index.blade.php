@@ -84,7 +84,13 @@
                                                     <td>
                                                         {{ $data?->position }}
                                                     </td>
-                                                    <td>{{ $data->joined_date }}</td>
+                                                    <td>
+                                                        @php
+                                                            $date = \Carbon\Carbon::parse($data->joined_date);
+                                                            $dc = new \Nilambar\NepaliDate\NepaliDate();
+                                                            $nd = $dc->convertAdToBs($date->year, $date->month, $date->day);
+                                                            echo $nd['year'] . '-' . $nd['month'] . '-' . $nd['day'];
+                                                        @endphp</td>
                                                     <td><a target="_blank"
                                                             href="{{ url(basename(storage_path()) . '/' . $data->user?->media?->file_path) }}"><i
                                                                 class="bi bi-image px-5"></i></a></td>
@@ -202,8 +208,17 @@
                                         <div class="col-4">
                                             <label for="joined_date" class="input-label">Joined Date</label>
                                             <div class="input-group has-validation">
-                                                <input type="text" class="form-control date-picker" id="joined_date"
-                                                    name="joined_date" placeholder="Joined Date**" required>
+                                                <input type="text" class="form-control" id="nepali-joined-date"
+                                                    placeholder="Joined Date**" required>
+                                                @error('joined_date')
+                                                    <div class="invalid-feedback">
+                                                        required joined_date
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <div class="input-group has-validation">
+                                                <input type="date" class="form-control" id="joined-date"
+                                                    name="joined_date" placeholder="Joined Date**" required readonly>
                                                 @error('joined_date')
                                                     <div class="invalid-feedback">
                                                         required joined_date
@@ -265,6 +280,18 @@
                     error: function(data) {}
                 });
             });
+        });
+    </script>
+    <script>
+        $('#nepali-joined-date').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#nepali-joined-date').on("dateChange", function(event) {
+
+            let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
+
+            $('#joined-date').val(formattedDate)
         });
     </script>
 @endsection

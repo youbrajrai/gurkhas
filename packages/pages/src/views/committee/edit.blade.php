@@ -100,11 +100,14 @@
                                         <select id="position" name="position" class="form-select" required>
                                             <option value="">Choose Position...</option>
                                             <option value="Coordinator"
-                                                {{ $item->position == 'Coordinator' ? 'selected' : '' }}>Coordinator</option>
-                                            <option value="Member" {{ $item->position == 'Member' ? 'selected' : '' }}>Member
+                                                {{ $item->position == 'Coordinator' ? 'selected' : '' }}>Coordinator
+                                            </option>
+                                            <option value="Member" {{ $item->position == 'Member' ? 'selected' : '' }}>
+                                                Member
                                             </option>
                                             <option value="Member Secretary"
-                                                {{ $item->position == 'Member Secretary' ? 'selected' : '' }}>Member Secretary
+                                                {{ $item->position == 'Member Secretary' ? 'selected' : '' }}>Member
+                                                Secretary
                                             </option>
                                         </select>
                                         @error('position')
@@ -117,15 +120,23 @@
                                 <div class="col-4">
                                     <label for="joined_date" class="input-label">Joined Date</label>
                                     <div class="input-group has-validation">
-                                        <input type="text" class="form-control date-picker" id="joined_date"
-                                            value="{{ old('joined_date', $item->joined_date) }}" name="joined_date"
+                                        <input type="text" class="form-control" id="nepali-joined-date"
                                             placeholder="Joined Date**" required>
                                         @error('joined_date')
                                             <div class="invalid-feedback">
                                                 required joined_date
                                             </div>
                                         @enderror
-
+                                    </div>
+                                    <div class="input-group has-validation">
+                                        <input type="date" class="form-control" id="joined-date"
+                                            value="{{ old('joined_date', $item->joined_date) }}" name="joined_date"
+                                            placeholder="Joined Date**" required readonly>
+                                        @error('joined_date')
+                                            <div class="invalid-feedback">
+                                                required joined_date
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -177,6 +188,18 @@
                     error: function(data) {}
                 });
             });
+        });
+    </script>
+    <script>
+        $('#nepali-joined-date').nepaliDatePicker({
+            dateFormat: '%y-%m-%d',
+            closeOnDateSelect: true,
+        });
+        $('#nepali-joined-date').on("dateChange", function(event) {
+
+            let formattedDate = getDate(event.datePickerData.adDate); // Format the date as YYYY-MM-DD
+
+            $('#joined-date').val(formattedDate)
         });
     </script>
 @endsection

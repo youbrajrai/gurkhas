@@ -271,7 +271,7 @@ class Get
 
     public static function cash_in_cash_out()
     {
-        $branches = Branch::get()->chunk(5);
+        $branches = Branch::get()->chunk(3);
         $data = [];
         foreach ($branches as $k => $branch) {
             $data[$k] = [

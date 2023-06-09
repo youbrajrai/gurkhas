@@ -439,9 +439,9 @@
                     scales: {
                         xAxes: [{
                             ticks: {
-                                fontSize: 8 // set font size for x-axis labels
+                                fontSize: 11 // set font size for x-axis labels
                             }
-                        }]
+                        }],
                     }
                 }
             });
