@@ -86,7 +86,7 @@ class Get
     public static function ratesFilter($filterBY)
     {
         $current_date = toNepaliDate(now()->format('Y-m-d'));
-        $date = Carbon::parse($current_date);
+        $date = Carbon::createFromFormat('Y-m-d', $current_date);
         $year = $date->year;
         $month = $date->month;
         $day = $date->day;
